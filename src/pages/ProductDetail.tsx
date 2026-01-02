@@ -38,8 +38,8 @@ const ProductDetail = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-serif font-bold mb-4">Produkt nicht gefunden</h1>
-          <Button onClick={() => navigate("/katalog")}>Zurück zum Katalog</Button>
+          <h1 className="text-2xl font-display mb-4">NIX GEFUNDEN</h1>
+          <Button onClick={() => navigate("/katalog")}>ZURÜCK</Button>
         </div>
       </div>
     );
@@ -67,25 +67,30 @@ const ProductDetail = () => {
         customMeasurements: measurements,
       },
     });
-    toast.success(`${product.name} wurde zum Warenkorb hinzugefügt!`);
+    toast.success(`${product.name} liegt im Korb!`);
   };
 
   return (
-    <div className="min-h-screen py-8">
-      <div className="container mx-auto px-4">
-        {/* Back Button */}
-        <button
-          onClick={() => navigate(-1)}
-          className="flex items-center text-muted-foreground hover:text-foreground mb-6 transition-colors"
-        >
-          <ArrowLeft className="h-4 w-4 mr-2" />
-          Zurück
-        </button>
+    <div className="min-h-screen">
+      {/* Breadcrumb */}
+      <div className="bg-muted border-b-2 border-foreground">
+        <div className="container mx-auto px-4 py-4">
+          <button
+            onClick={() => navigate(-1)}
+            className="flex items-center font-mono text-muted-foreground hover:text-foreground transition-colors"
+          >
+            <ArrowLeft className="h-4 w-4 mr-2" />
+            ZURÜCK
+          </button>
+        </div>
+      </div>
 
+      <div className="container mx-auto px-4 py-12">
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Product Image */}
           <div className="relative">
-            <div className="aspect-square rounded-lg overflow-hidden bg-muted">
+            <div className="absolute -inset-3 bg-accent -rotate-1" />
+            <div className="relative aspect-square overflow-hidden border-4 border-foreground">
               <img
                 src={product.image}
                 alt={product.name}
@@ -93,8 +98,8 @@ const ProductDetail = () => {
               />
             </div>
             {product.customizable && (
-              <div className="absolute top-4 left-4 bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-medium">
-                Maßanfertigung
+              <div className="absolute top-4 left-4 bg-primary text-primary-foreground px-4 py-2 font-display text-sm border-2 border-foreground">
+                NACH MASS
               </div>
             )}
           </div>
@@ -102,30 +107,30 @@ const ProductDetail = () => {
           {/* Product Info & Configurator */}
           <div className="space-y-8">
             <div>
-              <span className="text-sm uppercase tracking-wide text-muted-foreground">
+              <span className="text-sm font-mono uppercase tracking-wide text-muted-foreground">
                 {product.category}
               </span>
-              <h1 className="text-3xl md:text-4xl font-serif font-bold mt-2">{product.name}</h1>
-              <p className="text-2xl font-semibold text-primary mt-4">€{calculatePrice()}</p>
+              <h1 className="text-4xl md:text-5xl font-display mt-2">{product.name.toUpperCase()}</h1>
+              <p className="text-3xl font-display text-primary mt-4">€{calculatePrice()}</p>
             </div>
 
-            <p className="text-muted-foreground">{product.longDescription}</p>
+            <p className="font-mono text-muted-foreground">{product.longDescription}</p>
 
             {/* Fabric Selection */}
-            <div>
-              <h3 className="font-semibold mb-3">Stoff wählen</h3>
-              <div className="grid grid-cols-2 gap-2">
+            <div className="bg-card p-6 retro-border">
+              <h3 className="font-display text-lg mb-4">STOFF WÄHLEN</h3>
+              <div className="grid grid-cols-2 gap-3">
                 {product.fabrics.map((fabric) => (
                   <button
                     key={fabric.id}
                     onClick={() => setSelectedFabric(fabric)}
-                    className={`p-3 rounded-md border text-left transition-all ${
+                    className={`p-4 text-left transition-all border-2 ${
                       selectedFabric?.id === fabric.id
-                        ? "border-primary bg-primary/5"
-                        : "border-border hover:border-primary/50"
+                        ? "border-primary bg-primary/10"
+                        : "border-foreground hover:bg-muted"
                     }`}
                   >
-                    <span className="text-sm font-medium">{fabric.name}</span>
+                    <span className="font-mono text-sm">{fabric.name}</span>
                     {fabric.priceModifier > 0 && (
                       <span className="text-xs text-muted-foreground ml-2">
                         +€{fabric.priceModifier}
@@ -141,16 +146,16 @@ const ProductDetail = () => {
 
             {/* Size Selection */}
             <div>
-              <h3 className="font-semibold mb-3">Größe wählen</h3>
-              <div className="flex flex-wrap gap-2">
+              <h3 className="font-display text-lg mb-4">GRÖSSE</h3>
+              <div className="flex flex-wrap gap-3">
                 {product.sizes.map((size) => (
                   <button
                     key={size.id}
                     onClick={() => setSelectedSize(size)}
-                    className={`px-4 py-2 rounded-md border transition-all ${
+                    className={`px-5 py-3 font-mono text-sm transition-all border-2 ${
                       selectedSize?.id === size.id
-                        ? "border-primary bg-primary text-primary-foreground"
-                        : "border-border hover:border-primary/50"
+                        ? "border-foreground bg-foreground text-background"
+                        : "border-foreground hover:bg-muted"
                     }`}
                   >
                     {size.name}
@@ -164,16 +169,16 @@ const ProductDetail = () => {
 
             {/* Color Selection */}
             <div>
-              <h3 className="font-semibold mb-3">Details wählen</h3>
-              <div className="flex flex-wrap gap-2">
+              <h3 className="font-display text-lg mb-4">DETAILS</h3>
+              <div className="flex flex-wrap gap-3">
                 {product.colors.map((color) => (
                   <button
                     key={color.id}
                     onClick={() => setSelectedColor(color)}
-                    className={`px-4 py-2 rounded-md border transition-all ${
+                    className={`px-5 py-3 font-mono text-sm transition-all border-2 ${
                       selectedColor?.id === color.id
-                        ? "border-primary bg-primary text-primary-foreground"
-                        : "border-border hover:border-primary/50"
+                        ? "border-foreground bg-foreground text-background"
+                        : "border-foreground hover:bg-muted"
                     }`}
                   >
                     {color.name}
@@ -187,12 +192,12 @@ const ProductDetail = () => {
 
             {/* Custom Measurements */}
             {product.measurements && (
-              <div>
-                <h3 className="font-semibold mb-3">Maße eingeben</h3>
+              <div className="bg-muted p-6 retro-border">
+                <h3 className="font-display text-lg mb-4">DEINE MASSE</h3>
                 <div className="grid gap-4">
                   {product.measurements.map((measurement) => (
                     <div key={measurement.name} className="flex items-center gap-4">
-                      <label className="flex-1 text-sm">
+                      <label className="flex-1 font-mono text-sm">
                         {measurement.name} ({measurement.unit})
                       </label>
                       <input
@@ -206,7 +211,7 @@ const ProductDetail = () => {
                             [measurement.name]: parseInt(e.target.value) || measurement.default,
                           })
                         }
-                        className="w-24 px-3 py-2 border border-border rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="w-24 px-3 py-2 border-2 border-foreground bg-background text-foreground font-mono focus:outline-none focus:ring-2 focus:ring-primary"
                       />
                     </div>
                   ))}
@@ -215,25 +220,25 @@ const ProductDetail = () => {
             )}
 
             {/* Quantity & Add to Cart */}
-            <div className="flex items-center gap-4 pt-4 border-t border-border">
-              <div className="flex items-center border border-border rounded-md">
+            <div className="flex items-center gap-4 pt-6 border-t-2 border-foreground">
+              <div className="flex items-center border-2 border-foreground">
                 <button
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="px-3 py-2 hover:bg-muted transition-colors"
+                  className="px-4 py-3 hover:bg-muted transition-colors font-mono"
                 >
                   -
                 </button>
-                <span className="px-4 py-2 font-medium">{quantity}</span>
+                <span className="px-4 py-3 font-mono font-bold">{quantity}</span>
                 <button
                   onClick={() => setQuantity(quantity + 1)}
-                  className="px-3 py-2 hover:bg-muted transition-colors"
+                  className="px-4 py-3 hover:bg-muted transition-colors font-mono"
                 >
                   +
                 </button>
               </div>
-              <Button onClick={handleAddToCart} variant="hero" size="lg" className="flex-1">
+              <Button onClick={handleAddToCart} variant="default" size="lg" className="flex-1">
                 <ShoppingCart className="h-5 w-5 mr-2" />
-                In den Warenkorb
+                IN DEN KORB
               </Button>
             </div>
           </div>

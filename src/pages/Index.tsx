@@ -1,7 +1,7 @@
 import heroImage from "@/assets/hero-saddle-bag.jpg";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ArrowRight, Sparkles, Ruler, Shield } from "lucide-react";
+import { ArrowRight, Wrench, Ruler, Zap } from "lucide-react";
 import ProductCard from "@/components/ProductCard";
 import { products } from "@/data/products";
 import fabricSwatches from "@/assets/fabric-swatches.jpg";
@@ -10,92 +10,110 @@ const Index = () => {
   const featuredProducts = products.slice(0, 4);
 
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative h-[80vh] min-h-[600px] overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src={heroImage}
-            alt="Handgefertigte Satteltasche"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-accent/90 via-accent/60 to-transparent" />
-        </div>
+    <div className="min-h-screen overflow-hidden">
+      {/* Hero Section - Bold DDR Style */}
+      <section className="relative min-h-[90vh] overflow-hidden bg-primary">
+        {/* Geometric decorations */}
+        <div className="absolute top-10 left-10 w-32 h-32 border-4 border-accent rotate-12 opacity-40" />
+        <div className="absolute bottom-20 right-20 w-48 h-48 rounded-full border-4 border-card opacity-30" />
+        <div className="absolute top-1/2 right-1/4 w-20 h-20 bg-accent rotate-45 opacity-20" />
         
-        <div className="relative container mx-auto px-4 h-full flex items-center">
-          <div className="max-w-xl space-y-6 animate-slide-up">
-            <h1 className="text-4xl md:text-6xl font-serif font-bold text-accent-foreground leading-tight">
-              Alles drin.<br />
-              <span className="text-primary">Alles dran.</span>
-            </h1>
-            <p className="text-lg text-accent-foreground/80">
-              Handgefertigte Fahrradtaschen aus Halle. Jedes Stück nach Maß – individuell gefertigt für Ihr Abenteuer.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Link to="/katalog">
-                <Button variant="hero" size="lg">
-                  Zum Katalog
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-              <Link to="/anfrage">
-                <Button variant="heroOutline" size="lg">
-                  Maßanfertigung
-                </Button>
-              </Link>
+        <div className="container mx-auto px-4 h-full py-20">
+          <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[70vh]">
+            <div className="space-y-8 animate-slide-up relative z-10">
+              <div className="inline-block bg-accent text-accent-foreground px-4 py-2 retro-border text-sm font-bold tracking-wider">
+                HANDGEMACHT IN HALLE
+              </div>
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-display text-primary-foreground leading-[0.9]">
+                ALLES<br />
+                DRIN.<br />
+                <span className="text-accent">ALLES</span><br />
+                <span className="text-accent">DRAN.</span>
+              </h1>
+              <p className="text-xl text-primary-foreground/90 max-w-md font-mono">
+                Deine Fahrradtasche, deine Maße, dein Stoff. 
+                Jedes Teil wird von Hand genäht – nur für dich.
+              </p>
+              <div className="flex flex-wrap gap-4 pt-4">
+                <Link to="/katalog">
+                  <Button variant="retro" size="lg" className="group">
+                    SCHAU MAL REIN
+                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
+                <Link to="/anfrage">
+                  <Button variant="retroOutline" size="lg">
+                    LASS UNS QUATSCHEN
+                  </Button>
+                </Link>
+              </div>
+            </div>
+            
+            <div className="relative animate-fade-in">
+              <div className="absolute -inset-4 bg-accent rotate-3" />
+              <img
+                src={heroImage}
+                alt="Handgenähte Satteltasche"
+                className="relative w-full aspect-square object-cover retro-border"
+              />
+              <div className="absolute -bottom-6 -right-6 bg-secondary text-secondary-foreground px-6 py-3 retro-border font-bold">
+                100% HANDARBEIT
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-16 bg-secondary">
+      {/* Features Section - Skewed */}
+      <section className="py-24 bg-card relative geometric-pattern">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="flex items-start space-x-4 animate-fade-in" style={{ animationDelay: "0.1s" }}>
-              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                <Sparkles className="h-6 w-6 text-primary" />
+            <div className="bg-background p-8 retro-border hover-lift animate-fade-in" style={{ animationDelay: "0.1s" }}>
+              <div className="w-16 h-16 bg-primary flex items-center justify-center mb-6 retro-shadow-sm">
+                <Wrench className="h-8 w-8 text-primary-foreground" />
               </div>
-              <div>
-                <h3 className="font-semibold text-lg mb-2">Handgefertigt</h3>
-                <p className="text-muted-foreground">Jede Tasche wird von Hand in unserer Werkstatt in Halle gefertigt.</p>
-              </div>
+              <h3 className="text-2xl font-display mb-3">HANDGEMACHT</h3>
+              <p className="text-muted-foreground font-mono text-sm">
+                Jede Tasche entsteht in meiner Werkstatt in Halle. Kein Fließband, kein Quatsch.
+              </p>
             </div>
             
-            <div className="flex items-start space-x-4 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                <Ruler className="h-6 w-6 text-primary" />
+            <div className="bg-background p-8 retro-border hover-lift animate-fade-in" style={{ animationDelay: "0.2s" }}>
+              <div className="w-16 h-16 bg-secondary flex items-center justify-center mb-6 retro-shadow-sm">
+                <Ruler className="h-8 w-8 text-secondary-foreground" />
               </div>
-              <div>
-                <h3 className="font-semibold text-lg mb-2">Nach Maß</h3>
-                <p className="text-muted-foreground">Konfigurieren Sie Größe, Stoff und Details nach Ihren Wünschen.</p>
-              </div>
+              <h3 className="text-2xl font-display mb-3">NACH DEINEM MASS</h3>
+              <p className="text-muted-foreground font-mono text-sm">
+                Du sagst mir die Maße, ich näh dir das Teil. So einfach ist das.
+              </p>
             </div>
             
-            <div className="flex items-start space-x-4 animate-fade-in" style={{ animationDelay: "0.3s" }}>
-              <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                <Shield className="h-6 w-6 text-primary" />
+            <div className="bg-background p-8 retro-border hover-lift animate-fade-in" style={{ animationDelay: "0.3s" }}>
+              <div className="w-16 h-16 bg-accent flex items-center justify-center mb-6 retro-shadow-sm">
+                <Zap className="h-8 w-8 text-accent-foreground" />
               </div>
-              <div>
-                <h3 className="font-semibold text-lg mb-2">Langlebig</h3>
-                <p className="text-muted-foreground">Premium-Materialien für jahrelange Abenteuer auf dem Rad.</p>
-              </div>
+              <h3 className="text-2xl font-display mb-3">HÄLT EWIG</h3>
+              <p className="text-muted-foreground font-mono text-sm">
+                Nur beste Materialien. Die Tasche überlebt dich wahrscheinlich.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Featured Products */}
-      <section className="py-20">
+      <section className="py-24 bg-muted relative">
+        <div className="absolute top-0 left-0 w-full h-4 bg-primary" />
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">Unsere Produkte</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Entdecken Sie unsere handgefertigten Fahrradtaschen – jede ein Unikat, gefertigt nach Ihren Wünschen.
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-6xl font-display mb-4">WAS ICH SO MACHE</h2>
+            <p className="text-muted-foreground font-mono max-w-xl mx-auto">
+              Check mal die Sachen durch – und wenn dir was gefällt, 
+              dann meld dich einfach. Geht alles auch in anderen Größen und Farben.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {featuredProducts.map((product, index) => (
               <div key={product.id} className="animate-slide-up" style={{ animationDelay: `${index * 0.1}s` }}>
                 <ProductCard product={product} />
@@ -103,10 +121,10 @@ const Index = () => {
             ))}
           </div>
           
-          <div className="text-center mt-12">
+          <div className="text-center mt-16">
             <Link to="/katalog">
-              <Button variant="heroOutline" size="lg">
-                Alle Produkte ansehen
+              <Button variant="default" size="lg" className="retro-shadow">
+                ALLES ANSEHEN
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
@@ -115,28 +133,32 @@ const Index = () => {
       </section>
 
       {/* Fabric Section */}
-      <section className="py-20 bg-muted">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <h2 className="text-3xl md:text-4xl font-serif font-bold">Premium Stoffe</h2>
-              <p className="text-muted-foreground">
-                Wählen Sie aus einer Vielzahl hochwertiger Stoffe – von robustem Cordura über wasserdichte 
-                Materialien bis hin zu stylischen Camouflage-Mustern. Jeder Stoff wurde sorgfältig für 
-                Langlebigkeit und Funktionalität ausgewählt.
+      <section className="py-24 bg-secondary text-secondary-foreground relative overflow-hidden">
+        <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full border-8 border-card/20" />
+        <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-accent/20 rotate-45" />
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid md:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
+              <h2 className="text-4xl md:text-5xl font-display">STOFFE, DIE WAS AUSHALTEN</h2>
+              <p className="text-secondary-foreground/80 font-mono">
+                Cordura, X-Pac, Wachstuch – such dir was aus! 
+                Ich zeig dir, was ich da hab und was wozu taugt. 
+                Und ja, Camouflage geht auch.
               </p>
               <Link to="/stoffe">
-                <Button variant="default" size="lg">
-                  Stoffe entdecken
+                <Button variant="retro" size="lg">
+                  STOFFE CHECKEN
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
             </div>
             <div className="relative">
+              <div className="absolute -inset-4 bg-accent -rotate-2" />
               <img
                 src={fabricSwatches}
                 alt="Stoffauswahl"
-                className="rounded-lg shadow-lg w-full"
+                className="relative w-full retro-border"
               />
             </div>
           </div>
@@ -144,24 +166,26 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-accent text-accent-foreground">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-serif font-bold mb-4">
-            Bereit für Ihr individuelles Stück?
+      <section className="py-24 bg-foreground text-background relative">
+        <div className="absolute inset-0 geometric-pattern opacity-10" />
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <h2 className="text-4xl md:text-6xl font-display mb-6">
+            BOCK AUF<br />
+            <span className="text-primary">DEIN EIGENES TEIL?</span>
           </h2>
-          <p className="text-accent-foreground/80 max-w-2xl mx-auto mb-8">
-            Kontaktieren Sie uns für eine persönliche Beratung oder starten Sie direkt mit der 
-            Konfiguration Ihrer Wunsch-Tasche.
+          <p className="text-background/70 font-mono max-w-xl mx-auto mb-10">
+            Schreib mir einfach, was du dir vorstellst. 
+            Wir kriegen das schon hin!
           </p>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-6">
             <Link to="/anfrage">
-              <Button variant="hero" size="lg">
-                Anfrage stellen
+              <Button variant="retro" size="lg">
+                SCHREIB MIR
               </Button>
             </Link>
             <Link to="/katalog">
-              <Button variant="heroOutline" size="lg" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-accent">
-                Im Katalog stöbern
+              <Button variant="retroOutline" size="lg" className="border-background text-background hover:bg-background hover:text-foreground">
+                ERSTMAL GUCKEN
               </Button>
             </Link>
           </div>
