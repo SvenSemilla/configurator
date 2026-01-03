@@ -1,20 +1,18 @@
-import heroImage from "@/assets/hero-saddle-bag.jpg";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import ProductCard from "@/components/ProductCard";
 import { products } from "@/data/products";
-import fabricSwatches from "@/assets/fabric-swatches.jpg";
 
 const Index = () => {
   const featuredProducts = products.slice(0, 4);
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section 1 - Wie auf der echten Website */}
+      {/* Hero Section 1 - Alles drin. Alles dran. */}
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
         <img
-          src={heroImage}
+          src="https://www.reisefix.cc/-_-/res/4a8dc1eb-6909-4c55-bd55-60b21be0276e/images/files/4a8dc1eb-6909-4c55-bd55-60b21be0276e/720750bb-8017-4d88-b150-8be824e7d5c7/667-889/a1646acbdcc46a0f3fa8e8159c8074843e0bcb33"
           alt="Satteltasche Egon"
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -34,10 +32,10 @@ const Index = () => {
       {/* Cream Stripe */}
       <div className="cream-stripe py-3" />
 
-      {/* Hero Section 2 */}
+      {/* Hero Section 2 - Völlig von der Rolle */}
       <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
         <img
-          src={fabricSwatches}
+          src="https://www.reisefix.cc/-_-/res/4a8dc1eb-6909-4c55-bd55-60b21be0276e/images/files/4a8dc1eb-6909-4c55-bd55-60b21be0276e/bf75bcc9-a57c-476e-b5fe-4fc40a455623/768-1024/7f7c244e2cb4deed21f674a4513cd3ca30bd6eda"
           alt="Lenkerrolle Bernd"
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -59,10 +57,10 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-5xl font-display text-card-foreground mb-4">
-              Wat wir so machen
+              Handgefertigt in Halle
             </h2>
             <p className="font-mono text-card-foreground/70 max-w-xl mx-auto">
-              Jedes Teil wird von Hand genäht. Keine Massenware, keine Planwirtschaft – 
+              Jedes Teil wird von Hand genäht. Keine Massenware – 
               nur das, was du brauchst.
             </p>
           </div>
@@ -95,7 +93,7 @@ const Index = () => {
               <h3 className="text-xl font-display mb-3">Handarbeit</h3>
               <p className="font-mono text-muted-foreground text-sm">
                 Alles kommt aus meiner Werkstatt in Halle. 
-                Kein Fließband, keine Brigade.
+                Kein Fließband, keine Massenware.
               </p>
             </div>
             <div className="p-6">
@@ -103,7 +101,7 @@ const Index = () => {
               <h3 className="text-xl font-display mb-3">Nach Maß</h3>
               <p className="font-mono text-muted-foreground text-sm">
                 Du sagst mir die Maße, ich näh das Teil. 
-                Planerfüllung garantiert.
+                Passt garantiert.
               </p>
             </div>
             <div className="p-6">
@@ -124,12 +122,12 @@ const Index = () => {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-display text-card-foreground mb-6">
-                Stoffe, die wat aushalten
+                Stoffe, die was aushalten
               </h2>
               <p className="font-mono text-card-foreground/70 mb-6">
-                Cordura, X-Pac, Wachstuch – such dir wat aus. 
-                Ich zeig dir, wat ich hab und wat wozu taugt. 
-                Camouflage geht auch, is ja nich mehr verboten.
+                X-Pac RX30, VX21, X11 – such dir was aus. 
+                Ich zeig dir, was ich hab und was wozu taugt. 
+                Multicam geht auch, ist ja nicht mehr verboten.
               </p>
               <Link to="/stoffe">
                 <Button className="bg-card-foreground text-card hover:bg-primary hover:text-primary-foreground">
@@ -140,7 +138,7 @@ const Index = () => {
             </div>
             <div className="relative">
               <img
-                src={fabricSwatches}
+                src="https://www.reisefix.cc/-_-/res/4a8dc1eb-6909-4c55-bd55-60b21be0276e/images/files/4a8dc1eb-6909-4c55-bd55-60b21be0276e/6b651d5c-e245-4bea-845c-bacfdc2304b4/768-768/f57ec97f12ec46479eb2ab0a2593749c7d00c80e"
                 alt="Stoffauswahl"
                 className="w-full retro-border-dark"
               />
@@ -157,8 +155,8 @@ const Index = () => {
             <span className="text-primary">dein eigenes Teil?</span>
           </h2>
           <p className="font-mono text-muted-foreground max-w-xl mx-auto mb-10">
-            Schreib mir einfach, wat du dir vorstellst. 
-            Wir kriegen dat hin.
+            Schreib mir einfach, was du dir vorstellst. 
+            Wir kriegen das hin.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/anfrage">
@@ -168,7 +166,7 @@ const Index = () => {
             </Link>
             <Link to="/katalog">
               <Button variant="outline" className="border-foreground text-foreground hover:bg-foreground hover:text-background">
-                Erstma gucken
+                Erstmal gucken
               </Button>
             </Link>
           </div>

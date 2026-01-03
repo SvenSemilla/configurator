@@ -19,7 +19,7 @@ const Katalog = () => {
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-6xl font-display text-card-foreground mb-3">Katalog</h1>
           <p className="font-mono text-card-foreground/70 max-w-xl">
-            Hier siehst du, wat ich so mache. Such dir wat aus – 
+            Hier siehst du, was ich so mache. Such dir was aus – 
             geht alles auch in anderen Maßen und Farben.
           </p>
         </div>
@@ -53,7 +53,7 @@ const Katalog = () => {
         {filteredProducts.length === 0 && (
           <div className="text-center py-16">
             <p className="font-mono text-muted-foreground">
-              Nix gefunden. Probier mal ne andere Kategorie.
+              Nichts gefunden. Probier mal eine andere Kategorie.
             </p>
           </div>
         )}

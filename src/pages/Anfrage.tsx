@@ -25,7 +25,7 @@ const Anfrage = () => {
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-6xl font-display text-card-foreground mb-3">Anfrage</h1>
           <p className="font-mono text-card-foreground/70 max-w-xl">
-            Hast ne Idee? Brauchst wat Spezielles? Oder willst einfach mal quatschen? Her damit!
+            Hast eine Idee? Brauchst was Spezielles? Oder willst einfach mal quatschen? Her damit!
           </p>
         </div>
       </section>
@@ -34,7 +34,7 @@ const Anfrage = () => {
         <div className="grid lg:grid-cols-2 gap-10 max-w-5xl mx-auto">
           {/* Contact Form */}
           <div className="bg-muted p-6 border-2 border-foreground/30">
-            <h2 className="text-xl font-display mb-5">Wat liegt an?</h2>
+            <h2 className="text-xl font-display mb-5">Was liegt an?</h2>
             
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
@@ -91,12 +91,17 @@ const Anfrage = () => {
                   onChange={(e) => setFormData({ ...formData, product: e.target.value })}
                   className="w-full px-4 py-3 border-2 border-foreground/50 bg-background text-foreground font-mono focus:outline-none focus:border-primary"
                 >
-                  <option value="">Such dir wat aus...</option>
-                  <option value="satteltasche">Satteltasche</option>
-                  <option value="lenkertasche">Lenkertasche</option>
-                  <option value="lenkerrolle">Lenkerrolle</option>
+                  <option value="">Such dir was aus...</option>
+                  <option value="satteltasche-petra">Satteltasche PETRA</option>
+                  <option value="satteltasche-egon">Satteltasche EGON</option>
+                  <option value="lenkertasche-edgar">Lenkertasche EDGAR</option>
+                  <option value="lenkerrolle-bernd">Lenkerrolle BERND</option>
+                  <option value="lenkerrolle-bernd-fidlock">Lenkerrolle BERND FIDLOCK+</option>
                   <option value="rahmentasche">Rahmentasche</option>
-                  <option value="sonstiges">Wat ganz anderes</option>
+                  <option value="oberrohrtasche">Oberrohrtasche</option>
+                  <option value="lenkertasche-carsten">Lenkertasche CARSTEN</option>
+                  <option value="bemmentasche-karin">Bemmentasche KARIN</option>
+                  <option value="sonstiges">Was ganz anderes</option>
                 </select>
               </div>
 
@@ -111,7 +116,7 @@ const Anfrage = () => {
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   className="w-full px-4 py-3 border-2 border-foreground/50 bg-background text-foreground font-mono focus:outline-none focus:border-primary resize-none"
-                  placeholder="Wat schwebt dir vor? Welches Rad? Welche Maße? Einfach losschreiben..."
+                  placeholder="Was schwebt dir vor? Welches Rad? Welche Maße? Einfach losschreiben..."
                 />
               </div>
 
@@ -149,12 +154,12 @@ const Anfrage = () => {
             <div className="bg-muted p-6 border-2 border-foreground/30">
               <h3 className="font-display mb-3">Für Sonderanfertigungen</h3>
               <p className="font-mono text-muted-foreground text-sm mb-4">
-                Damit ich dir wat Ordentliches nähen kann, sag mir:
+                Damit ich dir was Ordentliches nähen kann, sag mir:
               </p>
               <ul className="space-y-2 font-mono text-sm text-muted-foreground">
                 <li className="flex items-center">
                   <span className="w-2 h-2 bg-primary mr-2" />
-                  Wat für'n Rad hast du?
+                  Was für ein Rad hast du?
                 </li>
                 <li className="flex items-center">
                   <span className="w-2 h-2 bg-primary mr-2" />
