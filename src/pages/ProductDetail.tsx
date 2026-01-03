@@ -3,7 +3,7 @@ import { useState, useMemo } from "react";
 import { getProductBySlug, ProductVariant } from "@/data/products";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/CartContext";
-import { ArrowLeft, ShoppingCart, Check } from "lucide-react";
+import { ArrowLeft, ShoppingBag, Check } from "lucide-react";
 import { toast } from "sonner";
 
 const ProductDetail = () => {
@@ -37,7 +37,7 @@ const ProductDetail = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-display mb-4">Nüscht gefunden</h1>
+          <h1 className="text-2xl font-display mb-4">Nicht gefunden</h1>
           <Button onClick={() => navigate("/katalog")}>Zurück zum Katalog</Button>
         </div>
       </div>
@@ -66,7 +66,7 @@ const ProductDetail = () => {
         customMeasurements: measurements,
       },
     });
-    toast.success(`${product.name} eingetütet!`);
+    toast.success(`${product.name} eingepackt!`);
   };
 
   return (
@@ -109,7 +109,8 @@ const ProductDetail = () => {
                 {product.category}
               </span>
               <h1 className="text-3xl md:text-4xl font-display mt-1">{product.name}</h1>
-              <p className="text-2xl font-display text-primary mt-3">€{calculatePrice()}</p>
+              <p className="text-sm font-mono text-primary mt-1">freie Farb- & Materialwahl</p>
+              <p className="text-2xl font-display text-primary mt-3">ab €{calculatePrice()}</p>
             </div>
 
             <p className="font-mono text-muted-foreground text-sm leading-relaxed">
@@ -119,7 +120,7 @@ const ProductDetail = () => {
             {/* Stoff */}
             <div className="cream-stripe p-5">
               <h3 className="font-display text-card-foreground mb-3">Stoff wählen</h3>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-2 gap-2 max-h-48 overflow-y-auto">
                 {product.fabrics.map((fabric) => (
                   <button
                     key={fabric.id}
@@ -143,49 +144,59 @@ const ProductDetail = () => {
             </div>
 
             {/* Größe */}
-            <div>
-              <h3 className="font-display mb-3">Größe</h3>
-              <div className="flex flex-wrap gap-2">
-                {product.sizes.map((size) => (
-                  <button
-                    key={size.id}
-                    onClick={() => setSelectedSize(size)}
-                    className={`px-4 py-2 font-mono text-sm transition-all border-2 ${
-                      selectedSize?.id === size.id
-                        ? "border-primary bg-primary text-primary-foreground"
-                        : "border-foreground/50 hover:border-foreground"
-                    }`}
-                  >
-                    {size.name}
-                    {size.priceModifier > 0 && (
-                      <span className="text-xs ml-1 opacity-75">+€{size.priceModifier}</span>
-                    )}
-                  </button>
-                ))}
+            {product.sizes.length > 1 && (
+              <div>
+                <h3 className="font-display mb-3">Größe / Variante</h3>
+                <div className="flex flex-wrap gap-2">
+                  {product.sizes.map((size) => (
+                    <button
+                      key={size.id}
+                      onClick={() => setSelectedSize(size)}
+                      className={`px-4 py-2 font-mono text-sm transition-all border-2 ${
+                        selectedSize?.id === size.id
+                          ? "border-primary bg-primary text-primary-foreground"
+                          : "border-foreground/50 hover:border-foreground"
+                      }`}
+                    >
+                      {size.name}
+                      {size.priceModifier > 0 && (
+                        <span className="text-xs ml-1 opacity-75">+€{size.priceModifier}</span>
+                      )}
+                    </button>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
 
-            {/* Details/Farbe */}
+            {/* Gurtband-Farbe */}
             <div>
-              <h3 className="font-display mb-3">Details</h3>
+              <h3 className="font-display mb-3">Gurtband-Farbe</h3>
               <div className="flex flex-wrap gap-2">
-                {product.colors.map((color) => (
+                {product.colors.slice(0, 10).map((color) => (
                   <button
                     key={color.id}
                     onClick={() => setSelectedColor(color)}
-                    className={`px-4 py-2 font-mono text-sm transition-all border-2 ${
+                    className={`flex items-center gap-2 px-3 py-2 font-mono text-sm transition-all border-2 ${
                       selectedColor?.id === color.id
-                        ? "border-primary bg-primary text-primary-foreground"
+                        ? "border-primary bg-primary/10"
                         : "border-foreground/50 hover:border-foreground"
                     }`}
                   >
-                    {color.name}
-                    {color.priceModifier > 0 && (
-                      <span className="text-xs ml-1 opacity-75">+€{color.priceModifier}</span>
+                    {color.color && (
+                      <span 
+                        className="w-4 h-4 border border-foreground/30"
+                        style={{ backgroundColor: color.color }}
+                      />
                     )}
+                    {color.name}
                   </button>
                 ))}
               </div>
+              {product.colors.length > 10 && (
+                <p className="text-xs font-mono text-muted-foreground mt-2">
+                  + {product.colors.length - 10} weitere Farben verfügbar
+                </p>
+              )}
             </div>
 
             {/* Maße */}
@@ -235,8 +246,8 @@ const ProductDetail = () => {
                 </button>
               </div>
               <Button onClick={handleAddToCart} className="flex-1 bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground">
-                <ShoppingCart className="h-4 w-4 mr-2" />
-                In den Korb
+                <ShoppingBag className="h-4 w-4 mr-2" />
+                In die Tasche
               </Button>
             </div>
           </div>

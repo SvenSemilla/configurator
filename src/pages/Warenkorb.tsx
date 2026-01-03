@@ -14,9 +14,9 @@ const Warenkorb = () => {
             <div className="w-20 h-20 bg-muted flex items-center justify-center mx-auto mb-5 border-2 border-foreground/30">
               <ShoppingBag className="h-10 w-10 text-muted-foreground" />
             </div>
-            <h1 className="text-2xl font-display mb-3">Noch nix drin</h1>
+            <h1 className="text-2xl font-display mb-3">Noch nichts drin</h1>
             <p className="font-mono text-muted-foreground mb-6">
-              Dein Korb is leer. Aber det lässt sich ändern!
+              Deine Tasche ist leer. Aber das lässt sich ändern!
             </p>
             <Link to="/katalog">
               <Button className="bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground">
@@ -63,7 +63,7 @@ const Warenkorb = () => {
                   <div className="text-xs font-mono text-muted-foreground mt-1 space-y-0.5">
                     {item.variants.fabric && <p>Stoff: {item.variants.fabric}</p>}
                     {item.variants.size && <p>Größe: {item.variants.size}</p>}
-                    {item.variants.color && <p>Details: {item.variants.color}</p>}
+                    {item.variants.color && <p>Gurtband: {item.variants.color}</p>}
                   </div>
                   <p className="font-display text-primary mt-2">€{item.price}</p>
                 </div>
