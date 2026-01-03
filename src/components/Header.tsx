@@ -12,36 +12,34 @@ const Header = () => {
   const totalItems = items.reduce((acc, item) => acc + item.quantity, 0);
 
   const navLinks = [
-    { to: "/", label: "Start" },
-    { to: "/katalog", label: "Sachen" },
-    { to: "/stoffe", label: "Stoffe" },
-    { to: "/anfrage", label: "Kontakt" },
+    { to: "/", label: "ZUHAUSE" },
+    { to: "/katalog", label: "KATALOG" },
+    { to: "/stoffe", label: "STOFFE" },
+    { to: "/anfrage", label: "ANFRAGE" },
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-card border-b-4 border-foreground">
+    <header className="sticky top-0 z-50 cream-stripe border-b-2 border-card-foreground">
       <div className="container mx-auto px-4">
-        <div className="flex h-20 items-center justify-between">
+        <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="bg-primary px-3 py-1 group-hover:bg-accent transition-colors">
-              <span className="text-2xl font-display text-primary-foreground group-hover:text-accent-foreground">REISEFIX</span>
-            </div>
-            <span className="text-xs font-mono uppercase tracking-widest text-muted-foreground hidden sm:block">
-              Fahrradtaschen<br />aus Halle
+          <Link to="/" className="flex items-center gap-2 group">
+            <span className="text-2xl font-display text-primary">reisefix</span>
+            <span className="text-[10px] font-mono uppercase tracking-wide text-card-foreground/60 hidden sm:block leading-tight">
+              FAHRRADTASCHEN
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-2">
+          <nav className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
-                className={`px-4 py-2 text-sm font-display uppercase tracking-wide transition-all hover:-translate-y-0.5 ${
+                className={`px-4 py-2 text-sm font-mono tracking-wide transition-colors ${
                   location.pathname === link.to 
-                    ? "bg-foreground text-background" 
-                    : "hover:bg-muted"
+                    ? "text-primary underline underline-offset-4" 
+                    : "text-card-foreground hover:text-primary"
                 }`}
               >
                 {link.label}
@@ -50,12 +48,12 @@ const Header = () => {
           </nav>
 
           {/* Cart & Mobile Menu */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <Link to="/warenkorb">
-              <Button variant="ghost" size="icon" className="relative hover:bg-muted border-2 border-transparent hover:border-foreground">
-                <ShoppingCart className="h-6 w-6" />
+              <Button variant="ghost" size="icon" className="relative text-card-foreground hover:text-primary hover:bg-transparent">
+                <ShoppingCart className="h-5 w-5" />
                 {totalItems > 0 && (
-                  <span className="absolute -top-2 -right-2 h-6 w-6 bg-primary text-primary-foreground text-xs flex items-center justify-center font-bold border-2 border-foreground">
+                  <span className="absolute -top-1 -right-1 h-5 w-5 bg-primary text-primary-foreground text-xs flex items-center justify-center font-bold">
                     {totalItems}
                   </span>
                 )}
@@ -66,27 +64,27 @@ const Header = () => {
             <Button
               variant="ghost"
               size="icon"
-              className="md:hidden border-2 border-foreground"
+              className="md:hidden text-card-foreground hover:text-primary hover:bg-transparent"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
-              {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
           </div>
         </div>
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <nav className="md:hidden py-6 border-t-4 border-foreground animate-fade-in">
-            <div className="flex flex-col gap-2">
+          <nav className="md:hidden py-4 border-t border-card-foreground/20 animate-fade-in">
+            <div className="flex flex-col gap-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.to}
                   to={link.to}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`px-4 py-3 text-sm font-display uppercase tracking-wide ${
+                  className={`px-4 py-3 text-sm font-mono ${
                     location.pathname === link.to 
-                      ? "bg-foreground text-background" 
-                      : "hover:bg-muted"
+                      ? "text-primary" 
+                      : "text-card-foreground hover:text-primary"
                   }`}
                 >
                   {link.label}
