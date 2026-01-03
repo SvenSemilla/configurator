@@ -11,17 +11,17 @@ const Warenkorb = () => {
       <div className="min-h-screen py-20">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-md mx-auto">
-            <div className="w-24 h-24 bg-muted flex items-center justify-center mx-auto mb-6 border-2 border-foreground">
-              <ShoppingBag className="h-12 w-12 text-muted-foreground" />
+            <div className="w-20 h-20 bg-muted flex items-center justify-center mx-auto mb-5 border-2 border-foreground/30">
+              <ShoppingBag className="h-10 w-10 text-muted-foreground" />
             </div>
-            <h1 className="text-3xl font-display mb-4">NOCH NIX DRIN</h1>
-            <p className="font-mono text-muted-foreground mb-8">
-              Dein Korb ist leer. Aber das lässt sich ändern!
+            <h1 className="text-2xl font-display mb-3">Noch nix drin</h1>
+            <p className="font-mono text-muted-foreground mb-6">
+              Dein Korb is leer. Aber det lässt sich ändern!
             </p>
             <Link to="/katalog">
-              <Button variant="default" size="lg">
-                MAL GUCKEN GEHEN
-                <ArrowRight className="ml-2 h-5 w-5" />
+              <Button className="bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground">
+                Mal gucken gehen
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
           </div>
@@ -32,10 +32,10 @@ const Warenkorb = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Hero */}
-      <section className="bg-secondary text-secondary-foreground py-12">
+      {/* Hero - Cream Stripe */}
+      <section className="cream-stripe py-12 border-b-2 border-card-foreground">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-display">DEIN KORB</h1>
+          <h1 className="text-4xl md:text-5xl font-display text-card-foreground">Warenkorb</h1>
         </div>
       </section>
 
@@ -46,10 +46,10 @@ const Warenkorb = () => {
             {items.map((item) => (
               <div
                 key={item.id}
-                className="bg-card retro-border p-4 flex gap-4"
+                className="bg-muted border-2 border-foreground/30 p-4 flex gap-4"
               >
                 {/* Image */}
-                <div className="w-24 h-24 overflow-hidden flex-shrink-0 border-2 border-foreground">
+                <div className="w-20 h-20 overflow-hidden flex-shrink-0 border-2 border-foreground/30">
                   <img
                     src={item.image}
                     alt={item.name}
@@ -59,8 +59,8 @@ const Warenkorb = () => {
 
                 {/* Details */}
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-display text-lg">{item.name.toUpperCase()}</h3>
-                  <div className="text-sm font-mono text-muted-foreground mt-1 space-y-0.5">
+                  <h3 className="font-display">{item.name}</h3>
+                  <div className="text-xs font-mono text-muted-foreground mt-1 space-y-0.5">
                     {item.variants.fabric && <p>Stoff: {item.variants.fabric}</p>}
                     {item.variants.size && <p>Größe: {item.variants.size}</p>}
                     {item.variants.color && <p>Details: {item.variants.color}</p>}
@@ -74,22 +74,22 @@ const Warenkorb = () => {
                     onClick={() => removeItem(item.id)}
                     className="text-muted-foreground hover:text-destructive transition-colors"
                   >
-                    <Trash2 className="h-5 w-5" />
+                    <Trash2 className="h-4 w-4" />
                   </button>
 
-                  <div className="flex items-center border-2 border-foreground">
+                  <div className="flex items-center border-2 border-foreground/50">
                     <button
                       onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                      className="p-2 hover:bg-muted transition-colors"
+                      className="p-1.5 hover:bg-background transition-colors"
                     >
-                      <Minus className="h-4 w-4" />
+                      <Minus className="h-3 w-3" />
                     </button>
-                    <span className="px-3 font-mono font-bold">{item.quantity}</span>
+                    <span className="px-2 font-mono text-sm">{item.quantity}</span>
                     <button
                       onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                      className="p-2 hover:bg-muted transition-colors"
+                      className="p-1.5 hover:bg-background transition-colors"
                     >
-                      <Plus className="h-4 w-4" />
+                      <Plus className="h-3 w-3" />
                     </button>
                   </div>
                 </div>
@@ -106,34 +106,34 @@ const Warenkorb = () => {
 
           {/* Order Summary */}
           <div className="lg:col-span-1">
-            <div className="bg-card retro-border retro-shadow p-6 sticky top-24">
-              <h2 className="text-xl font-display mb-6">ZUSAMMENFASSUNG</h2>
+            <div className="cream-stripe p-6 sticky top-20">
+              <h2 className="text-lg font-display text-card-foreground mb-4">Zusammenfassung</h2>
 
-              <div className="space-y-3 font-mono text-sm">
+              <div className="space-y-2 font-mono text-sm text-card-foreground/70">
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Zwischensumme</span>
-                  <span>€{total.toFixed(2)}</span>
+                  <span>Zwischensumme</span>
+                  <span className="text-card-foreground">€{total.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Versand</span>
-                  <span>Berechnen wir noch</span>
+                  <span>Versand</span>
+                  <span className="text-card-foreground">Berechnen wir noch</span>
                 </div>
               </div>
 
-              <div className="border-t-2 border-foreground mt-4 pt-4">
-                <div className="flex justify-between text-lg font-display">
-                  <span>GESAMT</span>
+              <div className="border-t border-card-foreground/20 mt-4 pt-4">
+                <div className="flex justify-between font-display text-card-foreground">
+                  <span>Gesamt</span>
                   <span className="text-primary">€{total.toFixed(2)}</span>
                 </div>
-                <p className="text-xs font-mono text-muted-foreground mt-1">inkl. MwSt.</p>
+                <p className="text-xs font-mono text-card-foreground/50 mt-1">inkl. MwSt.</p>
               </div>
 
-              <Button variant="default" size="lg" className="w-full mt-6">
-                BESTELLEN
+              <Button className="w-full mt-5 bg-card-foreground text-card hover:bg-primary hover:text-primary-foreground">
+                Bestellen
               </Button>
 
-              <p className="text-xs text-center font-mono text-muted-foreground mt-4">
-                Nach der Bestellung melde ich mich bei dir wegen der Maße.
+              <p className="text-xs text-center font-mono text-card-foreground/50 mt-3">
+                Nach der Bestellung meld ich mich bei dir wegen der Maße.
               </p>
             </div>
           </div>
