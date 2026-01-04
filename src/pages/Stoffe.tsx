@@ -76,24 +76,33 @@ const Stoffe = () => {
               </div>
 
               {/* Fabric Colors Grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                 {category.fabrics.map((fabric) => (
                   <div
                     key={fabric.id}
-                    className={`p-3 text-center border-2 transition-colors ${
+                    className={`overflow-hidden border-2 transition-colors ${
                       index % 2 === 0 
                         ? "border-foreground/30 hover:border-primary bg-muted" 
                         : "border-card-foreground/30 hover:border-primary bg-card-foreground/5"
                     }`}
                   >
-                    <span className={`font-mono text-xs ${index % 2 === 0 ? "" : "text-card-foreground"}`}>
-                      {fabric.name.replace("X-Pac RX30 ", "").replace("X-Pac VX21 ", "").replace("X-Pac X11 ", "")}
-                    </span>
-                    {fabric.priceModifier > 0 && (
-                      <p className={`text-xs font-mono mt-1 ${index % 2 === 0 ? "text-muted-foreground" : "text-card-foreground/60"}`}>
-                        +€{fabric.priceModifier}
-                      </p>
+                    {fabric.image && (
+                      <img 
+                        src={fabric.image} 
+                        alt={fabric.name}
+                        className="w-full aspect-square object-cover"
+                      />
                     )}
+                    <div className="p-2 text-center">
+                      <span className={`font-mono text-xs ${index % 2 === 0 ? "" : "text-card-foreground"}`}>
+                        {fabric.name}
+                      </span>
+                      {fabric.priceModifier > 0 && (
+                        <p className={`text-xs font-mono mt-1 ${index % 2 === 0 ? "text-muted-foreground" : "text-card-foreground/60"}`}>
+                          +€{fabric.priceModifier}
+                        </p>
+                      )}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -114,17 +123,22 @@ const Stoffe = () => {
             </p>
 
             {/* Webbing Colors Grid */}
-            <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-8 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4">
               {webbingColors.map((color) => (
                 <div
                   key={color.id}
-                  className="flex flex-col items-center gap-2 p-3 border-2 border-foreground/30 hover:border-primary transition-colors"
+                  className="overflow-hidden border-2 border-foreground/30 hover:border-primary transition-colors"
                 >
-                  <div 
-                    className="w-8 h-8 border border-foreground/20"
-                    style={{ backgroundColor: color.color }}
-                  />
-                  <span className="font-mono text-xs text-center">{color.name}</span>
+                  {color.image && (
+                    <img 
+                      src={color.image} 
+                      alt={color.name}
+                      className="w-full aspect-square object-cover"
+                    />
+                  )}
+                  <div className="p-2 text-center">
+                    <span className="font-mono text-xs">{color.name}</span>
+                  </div>
                 </div>
               ))}
             </div>
