@@ -3,7 +3,7 @@ import { useState, useMemo } from "react";
 import { getProductBySlug, ProductVariant } from "@/data/products";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/context/CartContext";
-import { ArrowLeft, ShoppingBag, Check } from "lucide-react";
+import { ArrowLeft, ShoppingBag, Check, ChevronDown, ChevronUp } from "lucide-react";
 import { toast } from "sonner";
 
 const ProductDetail = () => {
@@ -17,6 +17,7 @@ const ProductDetail = () => {
   const [selectedColor, setSelectedColor] = useState<ProductVariant | null>(null);
   const [measurements, setMeasurements] = useState<Record<string, number>>({});
   const [quantity, setQuantity] = useState(1);
+  const [showAllColors, setShowAllColors] = useState(false);
 
   useMemo(() => {
     if (product) {
@@ -132,9 +133,6 @@ const ProductDetail = () => {
                     }`}
                   >
                     {fabric.name}
-                    {fabric.priceModifier > 0 && (
-                      <span className="text-xs text-card-foreground/60 ml-1">+€{fabric.priceModifier}</span>
-                    )}
                     {selectedFabric?.id === fabric.id && (
                       <Check className="h-4 w-4 text-primary inline ml-2" />
                     )}
@@ -172,7 +170,7 @@ const ProductDetail = () => {
             <div>
               <h3 className="font-display mb-3">Gurtband-Farbe</h3>
               <div className="flex flex-wrap gap-2">
-                {product.colors.slice(0, 10).map((color) => (
+                {(showAllColors ? product.colors : product.colors.slice(0, 6)).map((color) => (
                   <button
                     key={color.id}
                     onClick={() => setSelectedColor(color)}
@@ -191,12 +189,25 @@ const ProductDetail = () => {
                     {color.name}
                   </button>
                 ))}
+                {product.colors.length > 6 && (
+                  <button
+                    onClick={() => setShowAllColors(!showAllColors)}
+                    className="flex items-center gap-1 px-3 py-2 font-mono text-sm transition-all border-2 border-foreground/50 hover:border-foreground hover:bg-muted"
+                  >
+                    {showAllColors ? (
+                      <>
+                        <ChevronUp className="h-4 w-4" />
+                        weniger
+                      </>
+                    ) : (
+                      <>
+                        <ChevronDown className="h-4 w-4" />
+                        +{product.colors.length - 6}
+                      </>
+                    )}
+                  </button>
+                )}
               </div>
-              {product.colors.length > 10 && (
-                <p className="text-xs font-mono text-muted-foreground mt-2">
-                  + {product.colors.length - 10} weitere Farben verfügbar
-                </p>
-              )}
             </div>
 
             {/* Maße */}
