@@ -93,16 +93,6 @@ const Stoffe = () => {
                         className="w-full aspect-square object-cover"
                       />
                     )}
-                    <div className="p-2 text-center">
-                      <span className={`font-mono text-xs ${index % 2 === 0 ? "" : "text-card-foreground"}`}>
-                        {fabric.name}
-                      </span>
-                      {fabric.priceModifier > 0 && (
-                        <p className={`text-xs font-mono mt-1 ${index % 2 === 0 ? "text-muted-foreground" : "text-card-foreground/60"}`}>
-                          +€{fabric.priceModifier}
-                        </p>
-                      )}
-                    </div>
                   </div>
                 ))}
               </div>
@@ -136,9 +126,6 @@ const Stoffe = () => {
                       className="w-full aspect-square object-cover"
                     />
                   )}
-                  <div className="p-2 text-center">
-                    <span className="font-mono text-xs">{color.name}</span>
-                  </div>
                 </div>
               ))}
             </div>
