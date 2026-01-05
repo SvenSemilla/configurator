@@ -19,6 +19,7 @@ const Footer = () => {
             <h4 className="font-display text-card-foreground mb-4">Rumgucken</h4>
             <ul className="space-y-2 text-sm font-mono">
               <li><Link to="/katalog" className="text-card-foreground/70 hover:text-primary transition-colors">Katalog</Link></li>
+              <li><Link to="/konfigurator" className="text-card-foreground/70 hover:text-primary transition-colors">Konfigurator</Link></li>
               <li><Link to="/stoffe" className="text-card-foreground/70 hover:text-primary transition-colors">Stoffe</Link></li>
               <li><Link to="/anfrage" className="text-card-foreground/70 hover:text-primary transition-colors">Anfrage</Link></li>
             </ul>

@@ -12,6 +12,7 @@ import ProductDetail from "./pages/ProductDetail";
 import Stoffe from "./pages/Stoffe";
 import Anfrage from "./pages/Anfrage";
 import Warenkorb from "./pages/Warenkorb";
+import Konfigurator from "./pages/Konfigurator";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -33,6 +34,7 @@ const App = () => (
                 <Route path="/stoffe" element={<Stoffe />} />
                 <Route path="/anfrage" element={<Anfrage />} />
                 <Route path="/warenkorb" element={<Warenkorb />} />
+                <Route path="/konfigurator" element={<Konfigurator />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </main>

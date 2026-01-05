@@ -14,6 +14,7 @@ const Header = () => {
   const navLinks = [
     { to: "/", label: "ZUHAUSE" },
     { to: "/katalog", label: "KATALOG" },
+    { to: "/konfigurator", label: "KONFIGURATOR" },
     { to: "/stoffe", label: "STOFFE" },
     { to: "/anfrage", label: "ANFRAGE" },
   ];
