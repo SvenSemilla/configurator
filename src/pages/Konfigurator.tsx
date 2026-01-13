@@ -13,6 +13,7 @@ import EgonConfigSummary from "@/components/configurator/EgonConfigSummary";
 const egonZones: EgonZone[] = [
   { id: "seite", label: "Seite", colorSource: "stoffe" },
   { id: "spitze", label: "Spitze", colorSource: "stoffe" },
+  { id: "oben", label: "Oberseite", colorSource: "stoffe" },
   { id: "gurtoben", label: "Kordelgurt", colorSource: "both" },
   { id: "gurt", label: "Gurtband", colorSource: "gurtbaender" },
   { id: "kordel", label: "Kordel", colorSource: "gurtbaender" },
