@@ -1,16 +1,39 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import { Send, Mail, MapPin } from "lucide-react";
+import { Send, Mail, MapPin, Package } from "lucide-react";
+
+interface ConfiguratorData {
+  model: string;
+  selections: Array<{
+    zone: string;
+    color: string;
+  }>;
+}
 
 const Anfrage = () => {
+  const location = useLocation();
+  const configuratorData = location.state?.configuratorData as ConfiguratorData | undefined;
+  const configDescription = location.state?.configDescription as string | undefined;
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    product: "",
-    message: "",
+    product: configuratorData?.model || "",
+    message: configDescription ? `Konfiguration: ${configDescription}` : "",
   });
+
+  useEffect(() => {
+    if (configuratorData) {
+      setFormData(prev => ({
+        ...prev,
+        product: configuratorData.model,
+        message: configDescription ? `Meine EGON+ Konfiguration:\n${configuratorData.selections.map(s => `${s.zone}: ${s.color}`).join('\n')}` : prev.message,
+      }));
+    }
+  }, [configuratorData, configDescription]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -94,6 +117,7 @@ const Anfrage = () => {
                   <option value="">Such dir was aus...</option>
                   <option value="satteltasche-petra">Satteltasche PETRA</option>
                   <option value="satteltasche-egon">Satteltasche EGON</option>
+                  <option value="EGON+">Satteltasche EGON+ (Konfigurator)</option>
                   <option value="lenkertasche-edgar">Lenkertasche EDGAR</option>
                   <option value="lenkerrolle-bernd">Lenkerrolle BERND</option>
                   <option value="lenkerrolle-bernd-fidlock">Lenkerrolle BERND FIDLOCK+</option>
@@ -104,6 +128,24 @@ const Anfrage = () => {
                   <option value="sonstiges">Was ganz anderes</option>
                 </select>
               </div>
+
+              {/* Configurator Summary */}
+              {configuratorData && (
+                <div className="bg-primary/10 border-2 border-primary p-4">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Package className="h-5 w-5 text-primary" />
+                    <h3 className="font-display text-foreground">Deine EGON+ Konfiguration</h3>
+                  </div>
+                  <div className="space-y-1 font-mono text-sm">
+                    {configuratorData.selections.map((sel, idx) => (
+                      <div key={idx} className="flex justify-between text-muted-foreground">
+                        <span>{sel.zone}:</span>
+                        <span className="text-foreground">{sel.color}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               <div>
                 <label htmlFor="message" className="block text-sm font-mono mb-1 text-muted-foreground">

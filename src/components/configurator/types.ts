@@ -20,6 +20,7 @@ export interface ZoneSelection {
   fabricId: string;
   fabricName: string;
   fabricImage?: string;
+  colorHex?: string;
 }
 
 export interface ConfiguredBag {
@@ -29,4 +30,13 @@ export interface ConfiguredBag {
   webbingColorId: string;
   webbingColorName: string;
   price: number;
+}
+
+// EGON+ specific types
+export type ColorSource = "stoffe" | "gurtbaender" | "both";
+
+export interface EgonZone {
+  id: string;
+  label: string;
+  colorSource: ColorSource;
 }
