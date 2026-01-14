@@ -33,7 +33,7 @@ export interface ConfiguredBag {
 }
 
 // EGON+ specific types
-export type ColorSource = "stoffe" | "gurtbaender" | "both";
+export type ColorSource = "stoffe" | "gurtbaender" | "both" | "gummikordel";
 
 export interface EgonZone {
   id: string;

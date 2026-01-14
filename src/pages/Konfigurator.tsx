@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { ShoppingCart, Send } from "lucide-react";
+import { Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useCart } from "@/context/CartContext";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { ZoneSelection, EgonZone } from "@/components/configurator/types";
 import EgonSVG from "@/components/configurator/EgonSVG";
@@ -16,19 +16,20 @@ const egonZones: EgonZone[] = [
   { id: "oben", label: "Oberseite", colorSource: "stoffe" },
   { id: "gurtoben", label: "Kordelgurt", colorSource: "both" },
   { id: "gurt", label: "Gurtband", colorSource: "gurtbaender" },
-  { id: "kordel", label: "Kordel", colorSource: "gurtbaender" },
+  { id: "kordel", label: "Kordel", colorSource: "gummikordel" },
 ];
 
-const EGON_BASE_PRICE = 170;
+const EGON_FIXED_PRICE = 240;
 
 const Konfigurator = () => {
-  const { addItem } = useCart();
   const { toast } = useToast();
-  const navigate = useNavigate();
   
   const [selections, setSelections] = useState<ZoneSelection[]>([]);
   const [activeZone, setActiveZone] = useState<string | null>(null);
   const [openPopover, setOpenPopover] = useState<string | null>(null);
+  const [customerName, setCustomerName] = useState("");
+  const [customerEmail, setCustomerEmail] = useState("");
+  const [isSending, setIsSending] = useState(false);
 
   const handleZoneClick = (zoneId: string) => {
     setActiveZone(zoneId);
@@ -53,31 +54,10 @@ const Konfigurator = () => {
     return selections.map(s => {
       const zone = egonZones.find(z => z.id === s.zoneId);
       return `${zone?.label}: ${s.fabricName}`;
-    }).join(", ");
+    }).join("\n");
   };
 
-  const handleAddToCart = () => {
-    if (!isConfigurationComplete()) return;
-    
-    addItem({
-      id: `config-egon-plus-${Date.now()}`,
-      name: "Satteltasche EGON+ (Konfiguriert)",
-      price: EGON_BASE_PRICE,
-      quantity: 1,
-      image: "https://www.reisefix.cc/-_-/res/4a8dc1eb-6909-4c55-bd55-60b21be0276e/images/files/4a8dc1eb-6909-4c55-bd55-60b21be0276e/1d13059c-6c45-4ed4-bb93-d56c60b1bcd3/768-576/1fc30cb1fcb8bf2a2df400cd04021e55f8cbf691",
-      variants: {
-        fabric: getConfigurationDescription(),
-        color: "",
-      }
-    });
-    
-    toast({
-      title: "In die Tasche!",
-      description: "EGON+ wurde zum Warenkorb hinzugefügt.",
-    });
-  };
-
-  const handleSendInquiry = () => {
+  const handleSendConfiguration = async () => {
     if (!isConfigurationComplete()) {
       toast({
         title: "Bitte alle Flächen auswählen",
@@ -87,24 +67,57 @@ const Konfigurator = () => {
       return;
     }
 
-    // Build inquiry data
-    const configData = {
-      model: "EGON+",
-      selections: selections.map(s => {
-        const zone = egonZones.find(z => z.id === s.zoneId);
-        return {
-          zone: zone?.label,
-          color: s.fabricName,
-        };
-      }),
-    };
+    if (!customerName.trim()) {
+      toast({
+        title: "Name fehlt",
+        description: "Bitte gib deinen Namen ein.",
+        variant: "destructive",
+      });
+      return;
+    }
 
-    // Navigate to inquiry page with config data
-    navigate("/anfrage", { 
-      state: { 
-        configuratorData: configData,
-        configDescription: getConfigurationDescription(),
-      } 
+    if (!customerEmail.trim() || !customerEmail.includes("@")) {
+      toast({
+        title: "E-Mail fehlt",
+        description: "Bitte gib eine gültige E-Mail-Adresse ein.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSending(true);
+
+    // Build email content
+    const configDetails = selections.map(s => {
+      const zone = egonZones.find(z => z.id === s.zoneId);
+      return `${zone?.label}: ${s.fabricName}`;
+    }).join("\n");
+
+    const emailBody = `
+Neue EGON+ Konfiguration
+
+Modell: EGON+
+Preis: ${EGON_FIXED_PRICE} €
+
+Konfiguration:
+${configDetails}
+
+Besteller:
+Name: ${customerName}
+E-Mail: ${customerEmail}
+    `.trim();
+
+    // Create mailto link as fallback (until backend is set up)
+    const mailtoLink = `mailto:info@reisefix.cc?subject=${encodeURIComponent("EGON+ Konfiguration von " + customerName)}&body=${encodeURIComponent(emailBody)}`;
+    
+    // Open mailto link
+    window.location.href = mailtoLink;
+
+    setIsSending(false);
+    
+    toast({
+      title: "Konfiguration wird gesendet",
+      description: "Dein E-Mail-Programm wird geöffnet.",
     });
   };
 
@@ -161,53 +174,56 @@ const Konfigurator = () => {
                   );
                 })}
               </div>
-              
-              {/* Legend */}
-              <div className="mt-4 pt-4 border-t border-card-foreground/20">
-                <p className="text-xs font-mono text-card-foreground/60 mb-2">Legende:</p>
-                <div className="flex flex-wrap gap-3 text-xs font-mono text-card-foreground/80">
-                  <span className="flex items-center gap-1">
-                    <span className="w-3 h-3 bg-primary/30 border border-primary"></span>
-                    Stoffe
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <span className="w-3 h-3 bg-secondary/30 border border-secondary"></span>
-                    Gurtbänder
-                  </span>
-                  <span className="flex items-center gap-1">
-                    <span className="w-3 h-3 bg-accent/30 border border-accent"></span>
-                    Stoffe + Gurtbänder
-                  </span>
-                </div>
-              </div>
             </div>
 
             <EgonConfigSummary
               zones={egonZones}
               selections={selections}
-              basePrice={EGON_BASE_PRICE}
+              basePrice={EGON_FIXED_PRICE}
             />
 
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Button
-                onClick={handleAddToCart}
-                disabled={!isConfigurationComplete()}
-                className="flex-1 bg-primary text-primary-foreground font-mono hover:bg-primary/90 disabled:opacity-50"
-              >
-                <ShoppingCart className="h-4 w-4 mr-2" />
-                In die Tasche
-              </Button>
+            {/* Customer Info Fields */}
+            <div className="bg-muted p-4 space-y-4">
+              <h4 className="font-display text-foreground">Deine Daten</h4>
               
-              <Button 
-                onClick={handleSendInquiry}
-                variant="outline"
-                className="flex-1 bg-card text-card-foreground border-2 border-card-foreground hover:bg-primary hover:text-primary-foreground font-mono"
-              >
-                <Send className="h-4 w-4 mr-2" />
-                Anfrage senden
-              </Button>
+              <div className="space-y-2">
+                <Label htmlFor="customer-name" className="font-mono text-sm text-muted-foreground">
+                  Name
+                </Label>
+                <Input
+                  id="customer-name"
+                  type="text"
+                  placeholder="Dein Name"
+                  value={customerName}
+                  onChange={(e) => setCustomerName(e.target.value)}
+                  className="bg-card border-2 border-card-foreground/30 focus:border-primary"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="customer-email" className="font-mono text-sm text-muted-foreground">
+                  E-Mail-Adresse
+                </Label>
+                <Input
+                  id="customer-email"
+                  type="email"
+                  placeholder="deine@email.de"
+                  value={customerEmail}
+                  onChange={(e) => setCustomerEmail(e.target.value)}
+                  className="bg-card border-2 border-card-foreground/30 focus:border-primary"
+                />
+              </div>
             </div>
+
+            {/* Send Button */}
+            <Button
+              onClick={handleSendConfiguration}
+              disabled={!isConfigurationComplete() || !customerName.trim() || !customerEmail.trim() || isSending}
+              className="w-full bg-primary text-primary-foreground font-mono hover:bg-primary/90 disabled:opacity-50 py-6 text-lg"
+            >
+              <Send className="h-5 w-5 mr-2" />
+              {isSending ? "Wird gesendet..." : "Konfiguration senden"}
+            </Button>
 
             {!isConfigurationComplete() && (
               <p className="text-xs font-mono text-muted-foreground text-center">

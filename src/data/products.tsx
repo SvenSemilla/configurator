@@ -101,6 +101,17 @@ export const webbingColors: ProductVariant[] = [
   { id: "webbing-lila", name: "Lila", priceModifier: 0, image: "https://www.reisefix.cc/-_-/res/4a8dc1eb-6909-4c55-bd55-60b21be0276e/images/files/4a8dc1eb-6909-4c55-bd55-60b21be0276e/64a557fb-8e6a-4a36-90be-4c1a4c343696/768-768/7ba1ee59bde92b3a5258b077df59d679afc5f890" },
 ];
 
+// Gummikordel Farben (basierend auf reisefix.cc/stoffe)
+export const rubberCordColors: ProductVariant[] = [
+  { id: "cord-schwarz", name: "Schwarz", priceModifier: 0, color: "#1a1a1a", image: "https://www.reisefix.cc/-_-/res/4a8dc1eb-6909-4c55-bd55-60b21be0276e/images/files/4a8dc1eb-6909-4c55-bd55-60b21be0276e/c5b30ed5-d39b-4b7b-8363-190208da0245/768-768/75a35e2da3c4cd744f37961bc9211d217c92378e" },
+  { id: "cord-weiss", name: "Weiß", priceModifier: 0, color: "#f5f5f5", image: "https://www.reisefix.cc/-_-/res/4a8dc1eb-6909-4c55-bd55-60b21be0276e/images/files/4a8dc1eb-6909-4c55-bd55-60b21be0276e/fbd0e4c0-f9a3-404c-8d30-24b65e9c2a8a/768-768/ea79b118ebb957e76c25744ecc1dd711130a927d" },
+  { id: "cord-grau", name: "Grau", priceModifier: 0, color: "#808080", image: "https://www.reisefix.cc/-_-/res/4a8dc1eb-6909-4c55-bd55-60b21be0276e/images/files/4a8dc1eb-6909-4c55-bd55-60b21be0276e/b19cd711-bd5a-4d8d-b946-fe4b4bb497d1/768-768/569e75c87cf5f85607d4109c28e791db51ee1040" },
+  { id: "cord-olive", name: "Olive", priceModifier: 0, color: "#556B2F", image: "https://www.reisefix.cc/-_-/res/4a8dc1eb-6909-4c55-bd55-60b21be0276e/images/files/4a8dc1eb-6909-4c55-bd55-60b21be0276e/2719710e-106d-4029-bf77-5ca0a4e2b7f3/768-768/1e39bed8892e34742cc7f5c40b72a18effbed517" },
+  { id: "cord-coyote", name: "Coyote", priceModifier: 0, color: "#8B7355", image: "https://www.reisefix.cc/-_-/res/4a8dc1eb-6909-4c55-bd55-60b21be0276e/images/files/4a8dc1eb-6909-4c55-bd55-60b21be0276e/0c6a3466-f1a1-4878-aa71-8600543a1d60/768-768/99a7a910f010a9800d3bf80293769872a480c61c" },
+  { id: "cord-rot", name: "Rot", priceModifier: 0, color: "#CC0000", image: "https://www.reisefix.cc/-_-/res/4a8dc1eb-6909-4c55-bd55-60b21be0276e/images/files/4a8dc1eb-6909-4c55-bd55-60b21be0276e/e33cf68f-a735-4f3c-bec3-b5c57931a779/768-768/9c50caaf0052aa8087bf4d7b815a8ae784dcd77c" },
+  { id: "cord-orange", name: "Orange", priceModifier: 0, color: "#FF6600", image: "https://www.reisefix.cc/-_-/res/4a8dc1eb-6909-4c55-bd55-60b21be0276e/images/files/4a8dc1eb-6909-4c55-bd55-60b21be0276e/d5e5a7f0-bd6d-4429-b80d-c1edc6720511/768-768/04d8ba9e063d868a42076a48c21a5356831f7190" },
+];
+
 export const products: Product[] = [
   {
     id: "satteltasche-petra",
