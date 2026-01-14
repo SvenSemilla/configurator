@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ChevronDown, ChevronUp, X } from "lucide-react";
-import { fabrics, xpacRX30, xpacVX21, xpacX11, webbingColors } from "@/data/products";
+import { xpacRX30, xpacVX21, xpacX11, webbingColors, rubberCordColors } from "@/data/products";
 import { EgonZone } from "./types";
 import {
   Popover,
@@ -40,6 +40,17 @@ const webbingHexColors: Record<string, string> = {
   "webbing-lila": "#9932CC",
 };
 
+// Hex colors for rubber cord
+const cordHexColors: Record<string, string> = {
+  "cord-schwarz": "#1a1a1a",
+  "cord-weiss": "#f5f5f5",
+  "cord-grau": "#808080",
+  "cord-olive": "#556B2F",
+  "cord-coyote": "#8B7355",
+  "cord-rot": "#CC0000",
+  "cord-orange": "#FF6600",
+};
+
 const ZoneColorSelector = ({ zone, selectedFabricId, selectedFabricName, onSelect, open, onOpenChange }: ZoneColorSelectorProps) => {
   const [expandedGroup, setExpandedGroup] = useState<string | null>("RX30");
   const [activeTab, setActiveTab] = useState<"stoffe" | "gurtbaender">(
@@ -48,6 +59,7 @@ const ZoneColorSelector = ({ zone, selectedFabricId, selectedFabricName, onSelec
 
   const showFabrics = zone.colorSource === "stoffe" || zone.colorSource === "both";
   const showWebbing = zone.colorSource === "gurtbaender" || zone.colorSource === "both";
+  const showRubberCord = zone.colorSource === "gummikordel";
 
   return (
     <Popover open={open} onOpenChange={onOpenChange}>
@@ -106,7 +118,7 @@ const ZoneColorSelector = ({ zone, selectedFabricId, selectedFabricName, onSelec
         
         <div className="max-h-[300px] overflow-y-auto">
           {/* Fabric selection */}
-          {((showFabrics && !showWebbing) || (zone.colorSource === "both" && activeTab === "stoffe")) && (
+          {((showFabrics && !showWebbing && !showRubberCord) || (zone.colorSource === "both" && activeTab === "stoffe")) && (
             <>
               {fabricGroups.map(group => (
                 <div key={group.name} className="border-b border-card-foreground/20 last:border-0">
@@ -160,7 +172,7 @@ const ZoneColorSelector = ({ zone, selectedFabricId, selectedFabricName, onSelec
           )}
 
           {/* Webbing color selection */}
-          {((showWebbing && !showFabrics) || (zone.colorSource === "both" && activeTab === "gurtbaender")) && (
+          {((showWebbing && !showFabrics && !showRubberCord) || (zone.colorSource === "both" && activeTab === "gurtbaender")) && (
             <div className="p-3">
               <p className="text-xs font-mono text-card-foreground/70 mb-3">Gurtbandfarbe wählen:</p>
               <div className="grid grid-cols-4 gap-2">
@@ -188,6 +200,43 @@ const ZoneColorSelector = ({ zone, selectedFabricId, selectedFabricName, onSelec
                       <div 
                         className="w-full h-full" 
                         style={{ backgroundColor: webbingHexColors[color.id] || "#333" }}
+                      />
+                    )}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Rubber cord color selection */}
+          {showRubberCord && (
+            <div className="p-3">
+              <p className="text-xs font-mono text-card-foreground/70 mb-3">Gummikordelfarbe wählen:</p>
+              <div className="grid grid-cols-4 gap-2">
+                {rubberCordColors.map(color => (
+                  <button
+                    key={color.id}
+                    onClick={() => {
+                      onSelect(color.id, color.name, color.image, cordHexColors[color.id]);
+                      onOpenChange(false);
+                    }}
+                    className={`aspect-square overflow-hidden transition-all ${
+                      selectedFabricId === color.id 
+                        ? "ring-2 ring-primary ring-offset-2" 
+                        : "hover:ring-2 hover:ring-primary/50"
+                    }`}
+                    title={color.name}
+                  >
+                    {color.image ? (
+                      <img
+                        src={color.image}
+                        alt={color.name}
+                        className="w-full h-full object-cover"
+                      />
+                    ) : (
+                      <div 
+                        className="w-full h-full" 
+                        style={{ backgroundColor: cordHexColors[color.id] || "#333" }}
                       />
                     )}
                   </button>
