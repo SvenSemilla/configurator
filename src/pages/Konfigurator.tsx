@@ -95,7 +95,7 @@ const Konfigurator = () => {
 
     toast({
       title: "Anfrage gesendet!",
-      description: "Ich habe deine Konfiguration erhalten und melde mich schnelsstmöglich bei dir.",
+      description: "Ich habe deine Konfiguration erhalten und melde mich schnellstmöglich bei dir.",
     });
 
     // Optional: Felder leeren nach Erfolg
