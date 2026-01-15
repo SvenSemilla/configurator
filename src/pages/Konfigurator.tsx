@@ -8,6 +8,7 @@ import { ZoneSelection, EgonZone } from "@/components/configurator/types";
 import EgonSVG from "@/components/configurator/EgonSVG";
 import ZoneColorSelector from "@/components/configurator/ZoneColorSelector";
 import EgonConfigSummary from "@/components/configurator/EgonConfigSummary";
+import emailjs from '@emailjs/browser';
 
 // EGON+ zones configuration
 const egonZones: EgonZone[] = [
@@ -58,68 +59,60 @@ const Konfigurator = () => {
   };
 
   const handleSendConfiguration = async () => {
-    if (!isConfigurationComplete()) {
-      toast({
-        title: "Bitte alle Flächen auswählen",
-        description: "Wähle für jede Fläche eine Farbe aus.",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    if (!customerName.trim()) {
-      toast({
-        title: "Name fehlt",
-        description: "Bitte gib deinen Namen ein.",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    if (!customerEmail.trim() || !customerEmail.includes("@")) {
-      toast({
-        title: "E-Mail fehlt",
-        description: "Bitte gib eine gültige E-Mail-Adresse ein.",
-        variant: "destructive",
-      });
-      return;
-    }
-
-    setIsSending(true);
-
-    // Build email content with image URLs for production reference
-    const configDetails = selections.map(s => {
-      const zone = egonZones.find(z => z.id === s.zoneId);
-      return `${zone?.label}: ${s.fabricName}\nBild-URL: ${s.fabricImage || "N/A"}`;
-    }).join("\n\n");
-
-    const emailBody = `
-Neue EGON+ Konfiguration
-
-Modell: EGON+
-Preis: ${EGON_FIXED_PRICE} €
-
-Konfiguration:
-${configDetails}
-
-Besteller:
-Name: ${customerName}
-E-Mail: ${customerEmail}
-    `.trim();
-
-    // Create mailto link as fallback (until backend is set up)
-    const mailtoLink = `mailto:info@reisefix.cc?subject=${encodeURIComponent("EGON+ Konfiguration von " + customerName)}&body=${encodeURIComponent(emailBody)}`;
-    
-    // Open mailto link
-    window.location.href = mailtoLink;
-
-    setIsSending(false);
-    
+  // 1. Validierung (behalten wir bei)
+  if (!isConfigurationComplete() || !customerName.trim() || !customerEmail.trim()) {
     toast({
-      title: "Konfiguration wird gesendet",
-      description: "Dein E-Mail-Programm wird geöffnet.",
+      title: "Unvollständig",
+      description: "Bitte fülle alle Felder und Farbwahlen aus.",
+      variant: "destructive",
     });
+    return;
+  }
+
+  setIsSending(true);
+
+  // 2. Konfigurations-Details lesbar aufbereiten
+  const configDetails = selections.map(s => {
+    const zone = egonZones.find(z => z.id === s.zoneId);
+    return `${zone?.label}: ${s.fabricName}`;
+  }).join("\n");
+
+  // 3. EmailJS Parameter (Hier deine IDs eintragen!)
+  const templateParams = {
+    customer_name: customerName,
+    customer_email: customerEmail,
+    config_details: configDetails,
+    price: `${EGON_FIXED_PRICE} €`,
   };
+
+  try {
+    await emailjs.send(
+      'service_au0q1gh',   // Ersetzen
+      'template_8po5gst',  // Ersetzen
+      templateParams,
+      'hgue-_77Q9vwdKoI7'     // Ersetzen
+    );
+
+    toast({
+      title: "Anfrage gesendet!",
+      description: "Ich habe deine Konfiguration erhalten und melde mich schnelsstmöglich bei dir.",
+    });
+
+    // Optional: Felder leeren nach Erfolg
+    setCustomerName("");
+    setCustomerEmail("");
+
+  } catch (error) {
+    console.error("EmailJS Error:", error);
+    toast({
+      title: "Fehler beim Senden",
+      description: "Bitte versuche es später erneut oder nutze info@reisefix.cc",
+      variant: "destructive",
+    });
+  } finally {
+    setIsSending(false);
+  }
+};
 
   return (
     <div className="min-h-screen bg-background">
