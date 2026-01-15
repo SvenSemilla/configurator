@@ -87,11 +87,11 @@ const Konfigurator = () => {
 
     setIsSending(true);
 
-    // Build email content
+    // Build email content with image URLs for production reference
     const configDetails = selections.map(s => {
       const zone = egonZones.find(z => z.id === s.zoneId);
-      return `${zone?.label}: ${s.fabricName}`;
-    }).join("\n");
+      return `${zone?.label}: ${s.fabricName}\nBild-URL: ${s.fabricImage || "N/A"}`;
+    }).join("\n\n");
 
     const emailBody = `
 Neue EGON+ Konfiguration
@@ -187,7 +187,7 @@ E-Mail: ${customerEmail}
               <h4 className="font-display text-foreground">Deine Daten</h4>
               
               <div className="space-y-2">
-                <Label htmlFor="customer-name" className="font-mono text-sm text-muted-foreground">
+                <Label htmlFor="customer-name" className="font-mono text-sm text-foreground">
                   Name
                 </Label>
                 <Input
@@ -196,12 +196,12 @@ E-Mail: ${customerEmail}
                   placeholder="Dein Name"
                   value={customerName}
                   onChange={(e) => setCustomerName(e.target.value)}
-                  className="bg-card border-2 border-card-foreground/30 focus:border-primary"
+                  className="bg-white text-gray-900 border-2 border-card-foreground/30 focus:border-primary placeholder:text-gray-400"
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="customer-email" className="font-mono text-sm text-muted-foreground">
+                <Label htmlFor="customer-email" className="font-mono text-sm text-foreground">
                   E-Mail-Adresse
                 </Label>
                 <Input
@@ -210,7 +210,7 @@ E-Mail: ${customerEmail}
                   placeholder="deine@email.de"
                   value={customerEmail}
                   onChange={(e) => setCustomerEmail(e.target.value)}
-                  className="bg-card border-2 border-card-foreground/30 focus:border-primary"
+                  className="bg-white text-gray-900 border-2 border-card-foreground/30 focus:border-primary placeholder:text-gray-400"
                 />
               </div>
             </div>
