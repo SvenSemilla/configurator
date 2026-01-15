@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { ChevronDown, ChevronUp, X } from "lucide-react";
-import { xpacRX30, xpacVX21, xpacX11, webbingColors, rubberCordColors } from "@/data/products";
 import { EgonZone } from "./types";
 import {
   Popover,
@@ -8,6 +7,13 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
+import {
+  cordMaterials,
+  webbingMaterials,
+  fabricGroups,
+  handleImageError,
+  ConfiguratorMaterial,
+} from "@/data/configuratorMaterials";
 
 interface ZoneColorSelectorProps {
   zone: EgonZone;
@@ -18,38 +24,37 @@ interface ZoneColorSelectorProps {
   onOpenChange: (open: boolean) => void;
 }
 
-const fabricGroups = [
-  { name: "RX30", fabrics: xpacRX30 },
-  { name: "VX21", fabrics: xpacVX21 },
-  { name: "X11", fabrics: xpacX11 },
-];
-
-// Hex colors for webbing (approximations based on names)
-const webbingHexColors: Record<string, string> = {
-  "webbing-schwarz": "#1a1a1a",
-  "webbing-weiss": "#f5f5f5",
-  "webbing-grau": "#808080",
-  "webbing-olive": "#556B2F",
-  "webbing-coyote": "#8B7355",
-  "webbing-rot": "#CC0000",
-  "webbing-orange": "#FF6600",
-  "webbing-gelb": "#FFD700",
-  "webbing-neongelb": "#CCFF00",
-  "webbing-neonorange": "#FF5F1F",
-  "webbing-petrol": "#006666",
-  "webbing-lila": "#9932CC",
-};
-
-// Hex colors for rubber cord
-const cordHexColors: Record<string, string> = {
-  "cord-schwarz": "#1a1a1a",
-  "cord-weiss": "#f5f5f5",
-  "cord-grau": "#808080",
-  "cord-olive": "#556B2F",
-  "cord-coyote": "#8B7355",
-  "cord-rot": "#CC0000",
-  "cord-orange": "#FF6600",
-};
+const MaterialButton = ({ 
+  material, 
+  isSelected, 
+  onSelect,
+  onClose
+}: { 
+  material: ConfiguratorMaterial; 
+  isSelected: boolean;
+  onSelect: (id: string, name: string, imageUrl: string) => void;
+  onClose: () => void;
+}) => (
+  <button
+    onClick={() => {
+      onSelect(material.id, material.name, material.imageUrl);
+      onClose();
+    }}
+    className={`aspect-square overflow-hidden transition-all ${
+      isSelected 
+        ? "ring-2 ring-primary ring-offset-2" 
+        : "hover:ring-2 hover:ring-primary/50"
+    }`}
+    title={material.name}
+  >
+    <img
+      src={material.imageUrl}
+      alt={material.name}
+      className="w-full h-full object-cover"
+      onError={() => handleImageError(material.imageUrl, material.name)}
+    />
+  </button>
+);
 
 const ZoneColorSelector = ({ zone, selectedFabricId, selectedFabricName, onSelect, open, onOpenChange }: ZoneColorSelectorProps) => {
   const [expandedGroup, setExpandedGroup] = useState<string | null>("RX30");
@@ -60,6 +65,10 @@ const ZoneColorSelector = ({ zone, selectedFabricId, selectedFabricName, onSelec
   const showFabrics = zone.colorSource === "stoffe" || zone.colorSource === "both";
   const showWebbing = zone.colorSource === "gurtbaender" || zone.colorSource === "both";
   const showRubberCord = zone.colorSource === "gummikordel";
+
+  const handleMaterialSelect = (id: string, name: string, imageUrl: string) => {
+    onSelect(id, name, imageUrl, undefined);
+  };
 
   return (
     <Popover open={open} onOpenChange={onOpenChange}>
@@ -136,33 +145,14 @@ const ZoneColorSelector = ({ zone, selectedFabricId, selectedFabricName, onSelec
                   
                   {expandedGroup === group.name && (
                     <div className="grid grid-cols-4 gap-1 p-2 bg-card-foreground/5">
-                      {group.fabrics.map(fabric => (
-                        <button
-                          key={fabric.id}
-                          onClick={() => {
-                            onSelect(fabric.id, fabric.name, fabric.image, undefined);
-                            onOpenChange(false);
-                          }}
-                          className={`aspect-square overflow-hidden transition-all ${
-                            selectedFabricId === fabric.id 
-                              ? "ring-2 ring-primary ring-offset-2" 
-                              : "hover:ring-2 hover:ring-primary/50"
-                          }`}
-                          title={fabric.name}
-                        >
-                          {fabric.image ? (
-                            <img
-                              src={fabric.image}
-                              alt={fabric.name}
-                              className="w-full h-full object-cover"
-                            />
-                          ) : (
-                            <div 
-                              className="w-full h-full" 
-                              style={{ backgroundColor: fabric.color || "#333" }}
-                            />
-                          )}
-                        </button>
+                      {group.materials.map(material => (
+                        <MaterialButton
+                          key={material.id}
+                          material={material}
+                          isSelected={selectedFabricId === material.id}
+                          onSelect={handleMaterialSelect}
+                          onClose={() => onOpenChange(false)}
+                        />
                       ))}
                     </div>
                   )}
@@ -176,33 +166,14 @@ const ZoneColorSelector = ({ zone, selectedFabricId, selectedFabricName, onSelec
             <div className="p-3">
               <p className="text-xs font-mono text-card-foreground/70 mb-3">Gurtbandfarbe wählen:</p>
               <div className="grid grid-cols-4 gap-2">
-                {webbingColors.map(color => (
-                  <button
-                    key={color.id}
-                    onClick={() => {
-                      onSelect(color.id, color.name, color.image, webbingHexColors[color.id]);
-                      onOpenChange(false);
-                    }}
-                    className={`aspect-square overflow-hidden transition-all ${
-                      selectedFabricId === color.id 
-                        ? "ring-2 ring-primary ring-offset-2" 
-                        : "hover:ring-2 hover:ring-primary/50"
-                    }`}
-                    title={color.name}
-                  >
-                    {color.image ? (
-                      <img
-                        src={color.image}
-                        alt={color.name}
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <div 
-                        className="w-full h-full" 
-                        style={{ backgroundColor: webbingHexColors[color.id] || "#333" }}
-                      />
-                    )}
-                  </button>
+                {webbingMaterials.map(material => (
+                  <MaterialButton
+                    key={material.id}
+                    material={material}
+                    isSelected={selectedFabricId === material.id}
+                    onSelect={handleMaterialSelect}
+                    onClose={() => onOpenChange(false)}
+                  />
                 ))}
               </div>
             </div>
@@ -213,33 +184,14 @@ const ZoneColorSelector = ({ zone, selectedFabricId, selectedFabricName, onSelec
             <div className="p-3">
               <p className="text-xs font-mono text-card-foreground/70 mb-3">Gummikordelfarbe wählen:</p>
               <div className="grid grid-cols-4 gap-2">
-                {rubberCordColors.map(color => (
-                  <button
-                    key={color.id}
-                    onClick={() => {
-                      onSelect(color.id, color.name, color.image, cordHexColors[color.id]);
-                      onOpenChange(false);
-                    }}
-                    className={`aspect-square overflow-hidden transition-all ${
-                      selectedFabricId === color.id 
-                        ? "ring-2 ring-primary ring-offset-2" 
-                        : "hover:ring-2 hover:ring-primary/50"
-                    }`}
-                    title={color.name}
-                  >
-                    {color.image ? (
-                      <img
-                        src={color.image}
-                        alt={color.name}
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <div 
-                        className="w-full h-full" 
-                        style={{ backgroundColor: cordHexColors[color.id] || "#333" }}
-                      />
-                    )}
-                  </button>
+                {cordMaterials.map(material => (
+                  <MaterialButton
+                    key={material.id}
+                    material={material}
+                    isSelected={selectedFabricId === material.id}
+                    onSelect={handleMaterialSelect}
+                    onClose={() => onOpenChange(false)}
+                  />
                 ))}
               </div>
             </div>
