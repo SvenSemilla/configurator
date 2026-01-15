@@ -1,5 +1,6 @@
-// Configurator materials data from finalized list
-// Source: https://assets.reisefix.cc
+// Komplette Material-Datenbank für den EGON+ Konfigurator
+// Quelle: Finale CSV-Materialtabelle - 73 Einträge total
+// Letzte Aktualisierung: Import aus beigefügter CSV
 
 export interface ConfiguratorMaterial {
   id: string;
@@ -8,7 +9,9 @@ export interface ConfiguratorMaterial {
   category: "cord" | "webbing" | "rx30" | "ux10" | "vx21" | "x11" | "x50";
 }
 
-// Kordeln (Cords)
+// ============================================
+// Kordel - 19 Einträge
+// ============================================
 export const cordMaterials: ConfiguratorMaterial[] = [
   { id: "cord-olive", name: "Oliv", imageUrl: "https://assets.reisefix.cc/cord/cord-olive.jpg", category: "cord" },
   { id: "cord-orange", name: "Orange", imageUrl: "https://assets.reisefix.cc/cord/cord-orange.jpg", category: "cord" },
@@ -31,26 +34,30 @@ export const cordMaterials: ConfiguratorMaterial[] = [
   { id: "cord-neon", name: "Leuchtgelb", imageUrl: "https://assets.reisefix.cc/cord/cord-neon.jpg", category: "cord" },
 ];
 
-// Gurtbänder (Webbing)
+// ============================================
+// Gurtband - 15 Einträge
+// ============================================
 export const webbingMaterials: ConfiguratorMaterial[] = [
-  { id: "web-babyblue", name: "Babyblau", imageUrl: "https://assets.reisefix.cc/webbing/web-babyblue.jpg", category: "webbing" },
-  { id: "web-black", name: "Schwarz", imageUrl: "https://assets.reisefix.cc/webbing/web-black.jpg", category: "webbing" },
-  { id: "web-coyote", name: "Coyote", imageUrl: "https://assets.reisefix.cc/webbing/web-coyote.jpg", category: "webbing" },
-  { id: "web-grey", name: "Grau", imageUrl: "https://assets.reisefix.cc/webbing/web-grey.jpg", category: "webbing" },
-  { id: "web-lightpink", name: "Hellrosa", imageUrl: "https://assets.reisefix.cc/webbing/web-lightpink.jpg", category: "webbing" },
-  { id: "web-lilac", name: "Lila", imageUrl: "https://assets.reisefix.cc/webbing/web-lilac.jpg", category: "webbing" },
-  { id: "web-limegreen", name: "Leuchtgrün", imageUrl: "https://assets.reisefix.cc/webbing/web-limegreen.jpg", category: "webbing" },
-  { id: "web-marigold", name: "Marigold", imageUrl: "https://assets.reisefix.cc/webbing/web-marigold.jpg", category: "webbing" },
-  { id: "web-mint", name: "Mint", imageUrl: "https://assets.reisefix.cc/webbing/web-mint.jpg", category: "webbing" },
-  { id: "web-neonorange", name: "Neonorange", imageUrl: "https://assets.reisefix.cc/webbing/web-neonorange.jpg", category: "webbing" },
-  { id: "web-olive", name: "Oliv", imageUrl: "https://assets.reisefix.cc/webbing/web-olive.jpg", category: "webbing" },
-  { id: "web-red", name: "Rot", imageUrl: "https://assets.reisefix.cc/webbing/web-red.jpg", category: "webbing" },
-  { id: "web-teal", name: "Petrol", imageUrl: "https://assets.reisefix.cc/webbing/web-teal.jpg", category: "webbing" },
+  { id: "web-powder", name: "Hellrosa", imageUrl: "https://assets.reisefix.cc/webbing/web-powder.jpg", category: "webbing" },
+  { id: "web-teal", name: "Türkis", imageUrl: "https://assets.reisefix.cc/webbing/web-teal.jpg", category: "webbing" },
+  { id: "web-violett", name: "Violett", imageUrl: "https://assets.reisefix.cc/webbing/web-violett.jpg", category: "webbing" },
   { id: "web-white", name: "Weiß", imageUrl: "https://assets.reisefix.cc/webbing/web-white.jpg", category: "webbing" },
-  { id: "web-yellow", name: "Gelb", imageUrl: "https://assets.reisefix.cc/webbing/web-yellow.jpg", category: "webbing" },
+  { id: "web-beige", name: "Beige", imageUrl: "https://assets.reisefix.cc/webbing/web-beige.jpg", category: "webbing" },
+  { id: "web-black", name: "Schwarz", imageUrl: "https://assets.reisefix.cc/webbing/web-black.jpg", category: "webbing" },
+  { id: "web-blue", name: "Bunablau", imageUrl: "https://assets.reisefix.cc/webbing/web-blue.jpg", category: "webbing" },
+  { id: "web-coyote", name: "Coyote", imageUrl: "https://assets.reisefix.cc/webbing/web-coyote.jpg", category: "webbing" },
+  { id: "web-darkblue", name: "Dunkelblau", imageUrl: "https://assets.reisefix.cc/webbing/web-darkblue.jpg", category: "webbing" },
+  { id: "web-fuchsia", name: "Magenta", imageUrl: "https://assets.reisefix.cc/webbing/web-fuchsia.jpg", category: "webbing" },
+  { id: "web-grey", name: "Grau", imageUrl: "https://assets.reisefix.cc/webbing/web-grey.jpg", category: "webbing" },
+  { id: "web-marigold", name: "Marigold", imageUrl: "https://assets.reisefix.cc/webbing/web-marigold.jpg", category: "webbing" },
+  { id: "web-olive", name: "Oliv", imageUrl: "https://assets.reisefix.cc/webbing/web-olive.jpg", category: "webbing" },
+  { id: "web-orange", name: "Orange", imageUrl: "https://assets.reisefix.cc/webbing/web-orange.jpg", category: "webbing" },
+  { id: "web-pink", name: "Pink", imageUrl: "https://assets.reisefix.cc/webbing/web-pink.jpg", category: "webbing" },
 ];
 
-// RX30 Stoffe
+// ============================================
+// Stoffe RX30 - 12 Einträge
+// ============================================
 export const rx30Materials: ConfiguratorMaterial[] = [
   { id: "rx30-slategrey", name: "Grau", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-slategrey.jpg", category: "rx30" },
   { id: "rx30-white", name: "Weiß", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-white.jpg", category: "rx30" },
@@ -66,13 +73,17 @@ export const rx30Materials: ConfiguratorMaterial[] = [
   { id: "rx30-seafoam", name: "Seeschaum", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-seafoam.jpg", category: "rx30" },
 ];
 
-// UX10 Stoffe
+// ============================================
+// Stoffe UX10 - 2 Einträge
+// ============================================
 export const ux10Materials: ConfiguratorMaterial[] = [
   { id: "ux10-white", name: "Weiß", imageUrl: "https://assets.reisefix.cc/fabrics/ux10/ux10-white.jpg", category: "ux10" },
   { id: "ux10-black", name: "Schwarz", imageUrl: "https://assets.reisefix.cc/fabrics/ux10/ux10-black.jpg", category: "ux10" },
 ];
 
-// VX21 Stoffe
+// ============================================
+// Stoffe VX21 - 16 Einträge
+// ============================================
 export const vx21Materials: ConfiguratorMaterial[] = [
   { id: "vx21-mulberry", name: "Flieder", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-mulberry.jpg", category: "vx21" },
   { id: "vx21-olive", name: "Oliv", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-olive.jpg", category: "vx21" },
@@ -92,24 +103,30 @@ export const vx21Materials: ConfiguratorMaterial[] = [
   { id: "vx21-lime", name: "Leuchtgelb", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-lime.jpg", category: "vx21" },
 ];
 
-// X11 Stoffe
+// ============================================
+// Stoffe X11 - 5 Einträge
+// ============================================
 export const x11Materials: ConfiguratorMaterial[] = [
   { id: "x11-glacierblue", name: "Gletscherblau", imageUrl: "https://assets.reisefix.cc/fabrics/x11/x11-glacierblue.jpg", category: "x11" },
   { id: "x11-moonstone", name: "Mondstein", imageUrl: "https://assets.reisefix.cc/fabrics/x11/x11-moonstone.jpg", category: "x11" },
   { id: "x11-mountainbrown", name: "Erdbraun", imageUrl: "https://assets.reisefix.cc/fabrics/x11/x11-mountainbrown.jpg", category: "x11" },
-  { id: "x11-oceanblue", name: "Ozeanblau", imageUrl: "https://assets.reisefix.cc/fabrics/x11/x11-oceanblue.jpg", category: "x11" },
-  { id: "x11-storm", name: "Sturmgrau", imageUrl: "https://assets.reisefix.cc/fabrics/x11/x11-storm.jpg", category: "x11" },
+  { id: "x11-olive", name: "Oliv", imageUrl: "https://assets.reisefix.cc/fabrics/x11/x11-olive.jpg", category: "x11" },
+  { id: "x11-stormgrey", name: "Sturmgrau", imageUrl: "https://assets.reisefix.cc/fabrics/x11/x11-stormgrey.jpg", category: "x11" },
 ];
 
-// X50 Stoffe
+// ============================================
+// Stoffe X50 - 4 Einträge
+// ============================================
 export const x50Materials: ConfiguratorMaterial[] = [
-  { id: "x50-tropics", name: "Tropen", imageUrl: "https://assets.reisefix.cc/fabrics/x50/x50-tropics.jpg", category: "x50" },
-  { id: "x50-snow", name: "Schnee", imageUrl: "https://assets.reisefix.cc/fabrics/x50/x50-snow.jpg", category: "x50" },
-  { id: "x50-urban", name: "Stadt", imageUrl: "https://assets.reisefix.cc/fabrics/x50/x50-urban.jpg", category: "x50" },
-  { id: "x50-woodland", name: "Wald", imageUrl: "https://assets.reisefix.cc/fabrics/x50/x50-woodland.jpg", category: "x50" },
+  { id: "x50-tropic", name: "Tropen", imageUrl: "https://assets.reisefix.cc/fabrics/x50/x50-tropic.jpg", category: "x50" },
+  { id: "x50-alpine", name: "Schnee", imageUrl: "https://assets.reisefix.cc/fabrics/x50/x50-alpine.jpg", category: "x50" },
+  { id: "x50-black", name: "Stadt", imageUrl: "https://assets.reisefix.cc/fabrics/x50/x50-black.jpg", category: "x50" },
+  { id: "x50-multicam", name: "Wald", imageUrl: "https://assets.reisefix.cc/fabrics/x50/x50multicam.jpg", category: "x50" },
 ];
 
-// Grouped fabrics for UI
+// ============================================
+// Gruppierte Stoffe für UI
+// ============================================
 export const fabricGroups = [
   { name: "RX30", materials: rx30Materials },
   { name: "UX10", materials: ux10Materials },
@@ -118,7 +135,7 @@ export const fabricGroups = [
   { name: "X50", materials: x50Materials },
 ];
 
-// All fabrics combined
+// Alle Stoffe kombiniert
 export const allFabricMaterials: ConfiguratorMaterial[] = [
   ...rx30Materials,
   ...ux10Materials,
@@ -127,16 +144,34 @@ export const allFabricMaterials: ConfiguratorMaterial[] = [
   ...x50Materials,
 ];
 
-// Helper function to get material by ID
+// Alle Materialien kombiniert
+export const allMaterials: ConfiguratorMaterial[] = [
+  ...cordMaterials,
+  ...webbingMaterials,
+  ...allFabricMaterials,
+];
+
+// Hilfsfunktion: Material anhand ID finden
 export const getMaterialById = (id: string): ConfiguratorMaterial | undefined => {
-  return [
-    ...cordMaterials,
-    ...webbingMaterials,
-    ...allFabricMaterials,
-  ].find(m => m.id === id);
+  return allMaterials.find(m => m.id === id);
 };
 
-// Helper to handle image load errors
+// Hilfsfunktion: Fehlerbehandlung für Bildladung
 export const handleImageError = (imageUrl: string, materialName: string) => {
   console.warn(`Failed to load material image: ${materialName} (${imageUrl})`);
+};
+
+// ============================================
+// Import-Statistik (Erfolgskontrolle)
+// ============================================
+export const materialStats = {
+  kordel: cordMaterials.length,         // 19
+  gurtband: webbingMaterials.length,    // 15
+  stoffeRX30: rx30Materials.length,     // 12
+  stoffeUX10: ux10Materials.length,     // 2
+  stoffeVX21: vx21Materials.length,     // 16
+  stoffeX11: x11Materials.length,       // 5
+  stoffeX50: x50Materials.length,       // 4
+  totalStoffe: 39,                      // 12+2+16+5+4
+  total: 73,                            // 19+15+39
 };
