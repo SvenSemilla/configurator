@@ -57,7 +57,7 @@ const MaterialButton = ({
 );
 
 const ZoneColorSelector = ({ zone, selectedFabricId, selectedFabricName, onSelect, open, onOpenChange }: ZoneColorSelectorProps) => {
-  const [expandedGroup, setExpandedGroup] = useState<string | null>("RX30");
+  const [expandedGroup, setExpandedGroup] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<"stoffe" | "gurtbaender">(
     zone.colorSource === "gurtbaender" ? "gurtbaender" : "stoffe"
   );
