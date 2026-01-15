@@ -129,19 +129,19 @@ export const x50Materials: ConfiguratorMaterial[] = [
 // ============================================
 export const fabricGroups = [
   { name: "RX30", materials: rx30Materials },
-  { name: "UX10", materials: ux10Materials },
   { name: "VX21", materials: vx21Materials },
   { name: "X11", materials: x11Materials },
   { name: "X50", materials: x50Materials },
+  { name: "UX10", materials: ux10Materials },
 ];
 
 // Alle Stoffe kombiniert
 export const allFabricMaterials: ConfiguratorMaterial[] = [
   ...rx30Materials,
-  ...ux10Materials,
   ...vx21Materials,
   ...x11Materials,
   ...x50Materials,
+  ...ux10Materials,
 ];
 
 // Alle Materialien kombiniert
