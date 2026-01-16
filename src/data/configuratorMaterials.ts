@@ -59,71 +59,71 @@ export const webbingMaterials: ConfiguratorMaterial[] = [
 // Stoffe RX30 - 12 Einträge
 // ============================================
 export const rx30Materials: ConfiguratorMaterial[] = [
-  { id: "rx30-white", name: "Weiß", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-white.jpg", category: "rx30" },
-  { id: "rx30-slategrey", name: "Grau", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-slategrey.jpg", category: "rx30" },
-  { id: "rx30-black", name: "Schwarz", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-black.jpg", category: "rx30" },
-  { id: "rx30-seafoam", name: "Seeschaum", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-seafoam.jpg", category: "rx30" },
-  { id: "rx30-evergreen", name: "Immergrün", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-evergreen.jpg", category: "rx30" },
-  { id: "rx30-goldenrod", name: "Goldrute", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-goldenrod.jpg", category: "rx30" },
-  { id: "rx30-coyotebrown", name: "Coyote (VX21)", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-coyotebrown.jpg", category: "rx30" },
-  { id: "rx30-cayenne", name: "Cayenne", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-cayenne.jpg", category: "rx30" },
-  { id: "rx30-alpenglow", name: "Alpenglühen", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-alpenglow.jpg", category: "rx30" },
-  { id: "rx30-plum", name: "Pflaume", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-plum.jpg", category: "rx30" },
-  { id: "rx30-oceanblue", name: "Meerblau", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-oceanblue.jpg", category: "rx30" },
-  { id: "rx30-bluebell", name: "Glockenblume", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-bluebell.jpg", category: "rx30" },
+  { id: "rx30-white", name: "RX30 Weiß", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-white.jpg", category: "rx30" },
+  { id: "rx30-slategrey", name: "RX30 Grau", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-slategrey.jpg", category: "rx30" },
+  { id: "rx30-black", name: "RX30 Schwarz", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-black.jpg", category: "rx30" },
+  { id: "rx30-seafoam", name: "RX30 Seeschaum", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-seafoam.jpg", category: "rx30" },
+  { id: "rx30-evergreen", name: "RX30 Immergrün", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-evergreen.jpg", category: "rx30" },
+  { id: "rx30-goldenrod", name: "RX30 Goldrute", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-goldenrod.jpg", category: "rx30" },
+  { id: "rx30-coyotebrown", name: "RX30 Coyote (VX21)", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-coyotebrown.jpg", category: "rx30" },
+  { id: "rx30-cayenne", name: "RX30 Cayenne", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-cayenne.jpg", category: "rx30" },
+  { id: "rx30-alpenglow", name: "RX30 Alpenglühen", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-alpenglow.jpg", category: "rx30" },
+  { id: "rx30-plum", name: "RX30 Pflaume", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-plum.jpg", category: "rx30" },
+  { id: "rx30-oceanblue", name: "RX30 Meerblau", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-oceanblue.jpg", category: "rx30" },
+  { id: "rx30-bluebell", name: "RX30 Glockenblume", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-bluebell.jpg", category: "rx30" },
 ];
 
 // ============================================
 // Stoffe UX10 - 2 Einträge
 // ============================================
 export const ux10Materials: ConfiguratorMaterial[] = [
-  { id: "ux10-white", name: "Weiß", imageUrl: "https://assets.reisefix.cc/fabrics/ux10/ux10-white.jpg", category: "ux10" },
-  { id: "ux10-black", name: "Schwarz", imageUrl: "https://assets.reisefix.cc/fabrics/ux10/ux10-black.jpg", category: "ux10" },
+  { id: "ux10-white", name: "UX10 Weiß", imageUrl: "https://assets.reisefix.cc/fabrics/ux10/ux10-white.jpg", category: "ux10" },
+  { id: "ux10-black", name: "UX10 Schwarz", imageUrl: "https://assets.reisefix.cc/fabrics/ux10/ux10-black.jpg", category: "ux10" },
 ];
 
 // ============================================
 // Stoffe VX21 - 18 Einträge
 // ============================================
 export const vx21Materials: ConfiguratorMaterial[] = [
-  { id: "vx21-white", name: "Weiß", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-white.jpg", category: "vx21" },
-  { id: "vx21-grey", name: "Grau", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-grey.jpg", category: "vx21" },
-  { id: "vx21-black", name: "Schwarz", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-black.jpg", category: "vx21" },
-  { id: "vx21-teal", name: "Türkis", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-teal.jpg", category: "vx21" },
-  { id: "vx21-cadmium", name: "Cadmium", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-cadmium.jpg", category: "vx21" },
-  { id: "vx21-olive", name: "Oliv", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-olive.jpg", category: "vx21" },
-  { id: "vx21-lime", name: "Leuchtgelb", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-lime.jpg", category: "vx21" },
-  { id: "vx21-yellow", name: "Gelb", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-yellow.jpg", category: "vx21" },
-  { id: "vx21-coyote", name: "Coyote", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-coyote.jpg", category: "vx21" },
-  { id: "vx21-orange", name: "Orange", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-orange.jpg", category: "vx21" },
-  { id: "vx21-coral", name: "Koralle", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-coral.jpg", category: "vx21" },
-  { id: "vx21-red", name: "Rot", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-red.jpg", category: "vx21" },
-  { id: "vx21-mulberry", name: "Flieder", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-mulberry.jpg", category: "vx21" },
-  { id: "vx21-violett", name: "Violett", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-violett.jpg", category: "vx21" },
-  { id: "vx21-deepblue", name: "Dunkelblau", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-deepblue.jpg", category: "vx21" },
-  { id: "vx21-bunablue", name: "Bunablau", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-bunablue.jpg", category: "vx21" },
-  { id: "vx21-leopard", name: "Leopard", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-leopard.jpg", category: "vx21" },
-  { id: "vx21-leoparty", name: "Leoparty", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-leoparty.jpg", category: "vx21" },
+  { id: "vx21-white", name: "VX21 Weiß", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-white.jpg", category: "vx21" },
+  { id: "vx21-grey", name: "VX21 Grau", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-grey.jpg", category: "vx21" },
+  { id: "vx21-black", name: "VX21 Schwarz", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-black.jpg", category: "vx21" },
+  { id: "vx21-teal", name: "VX21 Türkis", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-teal.jpg", category: "vx21" },
+  { id: "vx21-cadmium", name: "VX21 Cadmium", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-cadmium.jpg", category: "vx21" },
+  { id: "vx21-olive", name: "VX21 Oliv", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-olive.jpg", category: "vx21" },
+  { id: "vx21-lime", name: "VX21 Leuchtgelb", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-lime.jpg", category: "vx21" },
+  { id: "vx21-yellow", name: "VX21 Gelb", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-yellow.jpg", category: "vx21" },
+  { id: "vx21-coyote", name: "VX21 Coyote", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-coyote.jpg", category: "vx21" },
+  { id: "vx21-orange", name: "VX21 Orange", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-orange.jpg", category: "vx21" },
+  { id: "vx21-coral", name: "VX21 Koralle", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-coral.jpg", category: "vx21" },
+  { id: "vx21-red", name: "VX21 Rot", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-red.jpg", category: "vx21" },
+  { id: "vx21-mulberry", name: "VX21 Flieder", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-mulberry.jpg", category: "vx21" },
+  { id: "vx21-violett", name: "VX21 Violett", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-violett.jpg", category: "vx21" },
+  { id: "vx21-deepblue", name: "VX21 Dunkelblau", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-deepblue.jpg", category: "vx21" },
+  { id: "vx21-bunablue", name: "VX21 Bunablau", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-bunablue.jpg", category: "vx21" },
+  { id: "vx21-leopard", name: "VX21 Leopard", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-leopard.jpg", category: "vx21" },
+  { id: "vx21-leoparty", name: "VX21 Leoparty", imageUrl: "https://assets.reisefix.cc/fabrics/vx21/vx21-leoparty.jpg", category: "vx21" },
 ];
 
 // ============================================
 // Stoffe X11 - 5 Einträge
 // ============================================
 export const x11Materials: ConfiguratorMaterial[] = [
-  { id: "x11-moonstone", name: "Mondstein", imageUrl: "https://assets.reisefix.cc/fabrics/x11/x11-moonstone.jpg", category: "x11" },
-  { id: "x11-mountainbrown", name: "Erdbraun", imageUrl: "https://assets.reisefix.cc/fabrics/x11/x11-mountainbrown.jpg", category: "x11" },
-  { id: "x11-olive", name: "Oliv", imageUrl: "https://assets.reisefix.cc/fabrics/x11/x11-olive.jpg", category: "x11" },
-  { id: "x11-glacierblue", name: "Gletscherblau", imageUrl: "https://assets.reisefix.cc/fabrics/x11/x11-glacierblue.jpg", category: "x11" },
-  { id: "x11-stormgrey", name: "Sturmgrau", imageUrl: "https://assets.reisefix.cc/fabrics/x11/x11-stormgrey.jpg", category: "x11" },
+  { id: "x11-moonstone", name: "X11 Mondstein", imageUrl: "https://assets.reisefix.cc/fabrics/x11/x11-moonstone.jpg", category: "x11" },
+  { id: "x11-mountainbrown", name: "X11 Erdbraun", imageUrl: "https://assets.reisefix.cc/fabrics/x11/x11-mountainbrown.jpg", category: "x11" },
+  { id: "x11-olive", name: "X11 Oliv", imageUrl: "https://assets.reisefix.cc/fabrics/x11/x11-olive.jpg", category: "x11" },
+  { id: "x11-glacierblue", name: "X11 Gletscherblau", imageUrl: "https://assets.reisefix.cc/fabrics/x11/x11-glacierblue.jpg", category: "x11" },
+  { id: "x11-stormgrey", name: "X11 Sturmgrau", imageUrl: "https://assets.reisefix.cc/fabrics/x11/x11-stormgrey.jpg", category: "x11" },
 ];
 
 // ============================================
 // Stoffe X50 - 4 Einträge
 // ============================================
 export const x50Materials: ConfiguratorMaterial[] = [
-  { id: "x50-alpine", name: "Schnee", imageUrl: "https://assets.reisefix.cc/fabrics/x50/x50-alpine.jpg", category: "x50" },
-  { id: "x50-black", name: "Stadt", imageUrl: "https://assets.reisefix.cc/fabrics/x50/x50-black.jpg", category: "x50" },
-  { id: "x50-multicam", name: "Wald", imageUrl: "https://assets.reisefix.cc/fabrics/x50/x50multicam.jpg", category: "x50" },
-  { id: "x50-tropic", name: "Tropen", imageUrl: "https://assets.reisefix.cc/fabrics/x50/x50-tropic.jpg", category: "x50" },
+  { id: "x50-alpine", name: "X50 Schnee", imageUrl: "https://assets.reisefix.cc/fabrics/x50/x50-alpine.jpg", category: "x50" },
+  { id: "x50-black", name: "X50 Stadt", imageUrl: "https://assets.reisefix.cc/fabrics/x50/x50-black.jpg", category: "x50" },
+  { id: "x50-multicam", name: "X50 Wald", imageUrl: "https://assets.reisefix.cc/fabrics/x50/x50multicam.jpg", category: "x50" },
+  { id: "x50-tropic", name: "X50 Tropen", imageUrl: "https://assets.reisefix.cc/fabrics/x50/x50-tropic.jpg", category: "x50" },
 ];
 
 // ============================================
