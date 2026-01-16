@@ -59,6 +59,7 @@ export const webbingMaterials: ConfiguratorMaterial[] = [
 // Stoffe RX30 - 12 Einträge
 // ============================================
 export const rx30Materials: ConfiguratorMaterial[] = [
+<<<<<<< HEAD
 { id: "rx30-white", name: "Weiß", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-white.jpg", category: "rx30" },
 { id: "rx30-slategrey", name: "Grau", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-slategrey.jpg", category: "rx30" },
 { id: "rx30-black", name: "Schwarz", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-black.jpg", category: "rx30" },
@@ -71,6 +72,20 @@ export const rx30Materials: ConfiguratorMaterial[] = [
 { id: "rx30-plum", name: "Pflaume", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-plum.jpg", category: "rx30" },
 { id: "rx30-oceanblue", name: "Meerblau", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-oceanblue.jpg", category: "rx30" },
 { id: "rx30-bluebell", name: "Glockenblume", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-bluebell.jpg", category: "rx30" },
+=======
+  { id: "rx30-slategrey", name: "Grau", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-slategrey.jpg", category: "rx30" },
+  { id: "rx30-white", name: "Weiß", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-white.jpg", category: "rx30" },
+  { id: "rx30-alpenglow", name: "Alpenglühen", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-alpenglow.jpg", category: "rx30" },
+  { id: "rx30-black", name: "Schwarz", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-black.jpg", category: "rx30" },
+  { id: "rx30-bluebell", name: "Glockenblume", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-bluebell.jpg", category: "rx30" },
+  { id: "rx30-cayenne", name: "Cayenne", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-cayenne.jpg", category: "rx30" },
+  { id: "rx30-coyotebrown", name: "Coyote (VX21)", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-coyotebrown.jpg", category: "rx30" },
+  { id: "rx30-evergreen", name: "Immergrün", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-evergreen.jpg", category: "rx30" },
+  { id: "rx30-goldenrod", name: "Goldrute", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-goldenrod.jpg", category: "rx30" },
+  { id: "rx30-oceanblue", name: "Meerblau", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-oceanblue.jpg", category: "rx30" },
+  { id: "rx30-plum", name: "Pflaume", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-plum.jpg", category: "rx30" },
+  { id: "rx30-seafoam", name: "Seeschaum", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-seafoam.jpg", category: "rx30" },
+>>>>>>> a50131f938743d7ac0aa02951ee6c09255ad5581
 ];
 
 // ============================================
@@ -175,5 +190,5 @@ export const materialStats = {
   stoffeX11: x11Materials.length,       // 5
   stoffeX50: x50Materials.length,       // 4
   totalStoffe: 41,                      // 12+2+18+5+4
-  total: 73,                            // 19+15+39
+  total: 73,                            // 19+18+39
 };
