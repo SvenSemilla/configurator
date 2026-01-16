@@ -65,7 +65,7 @@ export const rx30Materials: ConfiguratorMaterial[] = [
   { id: "rx30-seafoam", name: "RX30 Seeschaum", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-seafoam.jpg", category: "rx30" },
   { id: "rx30-evergreen", name: "RX30 Immergrün", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-evergreen.jpg", category: "rx30" },
   { id: "rx30-goldenrod", name: "RX30 Goldrute", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-goldenrod.jpg", category: "rx30" },
-  { id: "rx30-coyotebrown", name: "RX30 Coyote (VX21)", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-coyotebrown.jpg", category: "rx30" },
+  { id: "rx30-coyotebrown", name: "RX30 Coyote", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-coyotebrown.jpg", category: "rx30" },
   { id: "rx30-cayenne", name: "RX30 Cayenne", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-cayenne.jpg", category: "rx30" },
   { id: "rx30-alpenglow", name: "RX30 Alpenglühen", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-alpenglow.jpg", category: "rx30" },
   { id: "rx30-plum", name: "RX30 Pflaume", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-plum.jpg", category: "rx30" },
