@@ -175,5 +175,5 @@ export const materialStats = {
   stoffeX11: x11Materials.length,       // 5
   stoffeX50: x50Materials.length,       // 4
   totalStoffe: 41,                      // 12+2+18+5+4
-  total: 75,                            // 19+15+41 Test mit VS Code
+  total: 75,                            // 19+18+39
 };
