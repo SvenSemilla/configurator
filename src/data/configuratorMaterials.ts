@@ -56,7 +56,7 @@ export const webbingMaterials: ConfiguratorMaterial[] = [
 ];
 
 // ============================================
-// Stoffe RX30 - 12 Einträge
+// Stoffe RX30 - 13 Einträge
 // ============================================
 export const rx30Materials: ConfiguratorMaterial[] = [
   { id: "rx30-white", name: "RX30 Weiß", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-white.jpg", category: "rx30" },
@@ -64,6 +64,7 @@ export const rx30Materials: ConfiguratorMaterial[] = [
   { id: "rx30-black", name: "RX30 Schwarz", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-black.jpg", category: "rx30" },
   { id: "rx30-seafoam", name: "RX30 Seeschaum", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-seafoam.jpg", category: "rx30" },
   { id: "rx30-evergreen", name: "RX30 Immergrün", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-evergreen.jpg", category: "rx30" },
+  { id: "rx30-moss", name: "RX30 Moosgrün", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-moss.jpg", category: "rx30" },
   { id: "rx30-goldenrod", name: "RX30 Goldrute", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-goldenrod.jpg", category: "rx30" },
   { id: "rx30-coyotebrown", name: "RX30 Coyote", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-coyotebrown.jpg", category: "rx30" },
   { id: "rx30-cayenne", name: "RX30 Cayenne", imageUrl: "https://assets.reisefix.cc/fabrics/rx30/rx30-cayenne.jpg", category: "rx30" },
@@ -169,11 +170,11 @@ export const handleImageError = (imageUrl: string, materialName: string) => {
 export const materialStats = {
   kordel: cordMaterials.length,         // 19
   gurtband: webbingMaterials.length,    // 15
-  stoffeRX30: rx30Materials.length,     // 12
+  stoffeRX30: rx30Materials.length,     // 13
   stoffeUX10: ux10Materials.length,     // 2
   stoffeVX21: vx21Materials.length,     // 18
   stoffeX11: x11Materials.length,       // 5
   stoffeX50: x50Materials.length,       // 4
-  totalStoffe: 41,                      // 12+2+18+5+4
+  totalStoffe: 42,                      // 13+2+18+5+4
   total: 75,                            // 19+18+39
 };
